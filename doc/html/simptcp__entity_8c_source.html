@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP:  Fichier source de src/simptcp_entity.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">src/simptcp_entity.c</div>  </div>
+</div>
+<div class="contents">
+<a href="simptcp__entity_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;assert.h&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;stdio.h&gt;</span>          <span class="comment">/* for printf() */</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;stdint.h&gt;</span>         <span class="comment">/* for UINT16_MAX */</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;string.h&gt;</span>         <span class="comment">/* for memset() */</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;unistd.h&gt;</span>         <span class="comment">/* for sleep() */</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;errno.h&gt;</span>          <span class="comment">/* for error numbers */</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;fcntl.h&gt;</span>              <span class="comment">/* for fcntl(), O_NONBLOCK */</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;arpa/inet.h&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;sys/time.h&gt;</span>           <span class="comment">/* for gettimeofday,..*/</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;simptcp_entity.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;<a class="code" href="simptcp__lib_8h.html" title="{Defines the state variables needed by a simptcp protocol entity}">simptcp_lib.h</a>&gt;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;simptcp_packet.h&gt;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;libc_socket.h&gt;</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;term_colors.h&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#define __PREFIX__          &quot;[&quot; COLOR(&quot;SIMPTCP_ENTITY&quot;, BRIGHT_CYAN) &quot;] &quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span><span class="preprocessor">#include &lt;term_io.h&gt;</span>
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="preprocessor">#ifndef __DEBUG__</span>
+<a name="l00027"></a>00027 <span class="preprocessor"></span><span class="preprocessor">#define __DEBUG__               1</span>
+<a name="l00028"></a>00028 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00029"></a>00029 <span class="preprocessor"></span>
+<a name="l00030"></a>00030 <span class="keyword">extern</span> <a class="code" href="structsimptcp__socket__states__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_states_funcs</a> simptcp_socket_states;
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 
+<a name="l00039"></a><a class="code" href="simptcp__entity_8c.html#a02113c8824bad0f80c20102a1756634b">00039</a> <span class="keywordtype">int</span> <a class="code" href="simptcp__entity_8c.html#a02113c8824bad0f80c20102a1756634b" title="Place socket udp utilisé par SimpTCP dans un mode non bloquant (en émission/réception)">set_non_blocking</a>(<span class="keywordtype">int</span> fd)
+<a name="l00040"></a>00040 {
+<a name="l00041"></a>00041     <span class="keywordtype">int</span> flags;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00044"></a>00044 <span class="preprocessor"></span>    printf(<span class="stringliteral">&quot;function %s called\n&quot;</span>, __func__);
+<a name="l00045"></a>00045 <span class="preprocessor">#endif</span>
+<a name="l00046"></a>00046 <span class="preprocessor"></span>
+<a name="l00047"></a>00047 <span class="comment">/* If they have O_NONBLOCK, use the Posix way to do it */</span>
+<a name="l00048"></a>00048 <span class="preprocessor">#if defined(O_NONBLOCK)</span>
+<a name="l00049"></a>00049 <span class="preprocessor"></span>    flags = fcntl(fd, F_GETFL, 0);
+<a name="l00050"></a>00050     <span class="keywordflow">if</span> (flags &lt; 0)
+<a name="l00051"></a>00051         flags = 0;
+<a name="l00052"></a>00052     <span class="keywordflow">return</span> fcntl(fd, F_SETFL, flags | O_NONBLOCK);
+<a name="l00053"></a>00053 <span class="preprocessor">#else</span>
+<a name="l00054"></a>00054 <span class="preprocessor"></span>    <span class="comment">/* Otherwise, use the old way of doing it */</span>
+<a name="l00055"></a>00055     flags = 1;
+<a name="l00056"></a>00056     <span class="keywordflow">return</span> ioctl(fd, FIOBIO, &amp;flags);
+<a name="l00057"></a>00057 <span class="preprocessor">#endif</span>
+<a name="l00058"></a>00058 <span class="preprocessor"></span>}
+<a name="l00059"></a>00059 
+<a name="l00072"></a><a class="code" href="simptcp__entity_8c.html#af69e96f64f617993d5453b933536e81f">00072</a> <span class="keywordtype">int</span> <a class="code" href="simptcp__entity_8c.html#af69e96f64f617993d5453b933536e81f" title="implemente la fonction de demultiplexage de SimpTCP declenchee a l&#39;arrivee d&#39;un PDU SimpTCP...">demultiplex_packet</a>(<span class="keywordtype">char</span> * buffer,<span class="keyword">struct</span> sockaddr_in * udp_remote)
+<a name="l00073"></a>00073 {
+<a name="l00074"></a>00074   <span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> *sock = NULL;
+<a name="l00075"></a>00075   <span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> *new_sock = NULL; 
+<a name="l00076"></a>00076   <span class="keyword">struct </span>sockaddr_in simptcp_remote;
+<a name="l00077"></a>00077   u_int16_t dport;
+<a name="l00078"></a>00078   <span class="keywordtype">int</span> fd; <span class="comment">/* simtcp socket descriptor */</span>
+<a name="l00079"></a>00079   <span class="keywordtype">int</span> slen=<span class="keyword">sizeof</span>(<span class="keyword">struct </span>sockaddr_in);
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00082"></a>00082 <span class="preprocessor"></span>    printf(<span class="stringliteral">&quot;function %s called\n&quot;</span>, __func__);
+<a name="l00083"></a>00083 <span class="preprocessor">#endif </span>
+<a name="l00084"></a>00084 <span class="preprocessor"></span>
+<a name="l00085"></a>00085  <span class="comment">/* set the sockaddr of the remote simptcp socket </span>
+<a name="l00086"></a>00086 <span class="comment">    from which the packet originates*/</span>
+<a name="l00087"></a>00087  <span class="comment">/* rely on the sockaddr of the remote udp socket */</span> 
+<a name="l00088"></a>00088   memcpy(&amp;simptcp_remote, udp_remote, slen);
+<a name="l00089"></a>00089   simptcp_remote.sin_port = htons(simptcp_get_sport(buffer));
+<a name="l00090"></a>00090   dport = htons(simptcp_get_dport(buffer));
+<a name="l00091"></a>00091  
+<a name="l00092"></a>00092   <span class="comment">/* check if the packet is destined for a non-listening socket */</span>
+<a name="l00093"></a>00093         <span class="comment">/* this is an inefficient way to fetch for open sockets </span>
+<a name="l00094"></a>00094 <span class="comment">           could be imporved using the open_sockets_list </span>
+<a name="l00095"></a>00095 <span class="comment">           which points to the head of the list of open sockets</span>
+<a name="l00096"></a>00096 <span class="comment">        */</span>
+<a name="l00097"></a>00097   <span class="keywordflow">for</span> (fd=0;fd&lt; MAX_OPEN_SOCK;fd++)
+<a name="l00098"></a>00098     {
+<a name="l00099"></a>00099       <span class="keywordflow">if</span> ((sock=simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd]) != NULL)
+<a name="l00100"></a>00100         { <span class="comment">/* this is an open socket ..*/</span>
+<a name="l00101"></a>00101           <span class="keywordflow">if</span> (sock-&gt;<a class="code" href="structsimptcp__socket.html#a06e621718f310613f27789e3d2d7fd8a">local_simptcp</a>.sin_port == dport
+<a name="l00102"></a>00102               &amp;&amp; sock-&gt;<a class="code" href="structsimptcp__socket.html#a8316ece43b0195b957fbd173355a1743">remote_simptcp</a>.sin_addr.s_addr == simptcp_remote.sin_addr.s_addr
+<a name="l00103"></a>00103              &amp;&amp; sock-&gt;<a class="code" href="structsimptcp__socket.html#a8316ece43b0195b957fbd173355a1743">remote_simptcp</a>.sin_port == simptcp_remote.sin_port)
+<a name="l00104"></a>00104             { <span class="comment">/* this is the fetched socket */</span>
+<a name="l00105"></a>00105 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00106"></a>00106 <span class="preprocessor"></span>              printf(<span class="stringliteral">&quot;Delivering packet to socket fd %u at state %s\n&quot;</span>,
+<a name="l00107"></a>00107                      fd, <a class="code" href="simptcp__lib_8c.html#a453cf251dbed8f0752cdc9cedb73c2ee" title="renvoie une chaine correspondant a l&#39;etat dans lequel se trouve un socket simpTCP. Utilisee a des fins d&#39;affichage">simptcp_socket_state_get_str</a>(sock-&gt;<a class="code" href="structsimptcp__socket.html#a8478b244ec3238b1067ba66a9687de1a">socket_state</a>));
+<a name="l00108"></a>00108 <span class="preprocessor">#endif</span>
+<a name="l00109"></a>00109 <span class="preprocessor"></span>              <span class="keywordflow">return</span> fd;
+<a name="l00110"></a>00110             } 
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112     }
+<a name="l00113"></a>00113    <span class="comment">/* now, check if the packet is destined for a listening sock */</span>
+<a name="l00114"></a>00114   <span class="keywordflow">for</span> (fd=0;fd&lt; MAX_OPEN_SOCK;fd++)
+<a name="l00115"></a>00115     {
+<a name="l00116"></a>00116       <span class="keywordflow">if</span> ((sock=simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd]) != NULL)
+<a name="l00117"></a>00117         { 
+<a name="l00118"></a>00118           <span class="keywordflow">if</span> ((sock-&gt;<a class="code" href="structsimptcp__socket.html#a06e621718f310613f27789e3d2d7fd8a">local_simptcp</a>.sin_port == dport)
+<a name="l00119"></a>00119               &amp;&amp; (sock-&gt;<a class="code" href="structsimptcp__socket.html#ae02f94c3fd768243e043f1a24b4f80b2">socket_type</a> == listening_server))
+<a name="l00120"></a>00120             { <span class="comment">/* this is the fetched listening socket */</span>
+<a name="l00121"></a>00121 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00122"></a>00122 <span class="preprocessor"></span>              printf(<span class="stringliteral">&quot;Delivering packet to socket fd %u at state %s\n&quot;</span>,
+<a name="l00123"></a>00123                      fd, <a class="code" href="simptcp__lib_8c.html#a453cf251dbed8f0752cdc9cedb73c2ee" title="renvoie une chaine correspondant a l&#39;etat dans lequel se trouve un socket simpTCP. Utilisee a des fins d&#39;affichage">simptcp_socket_state_get_str</a>(sock-&gt;<a class="code" href="structsimptcp__socket.html#a8478b244ec3238b1067ba66a9687de1a">socket_state</a>));
+<a name="l00124"></a>00124 <span class="preprocessor">#endif</span>
+<a name="l00125"></a>00125 <span class="preprocessor"></span>              <span class="comment">/* for a listening socket an additionnal work is needed :</span>
+<a name="l00126"></a>00126 <span class="comment">                 save the remote udp/simpTCP addresses; they will be used</span>
+<a name="l00127"></a>00127 <span class="comment">                 when processing the received pdu</span>
+<a name="l00128"></a>00128 <span class="comment">               */</span>             
+<a name="l00129"></a>00129               <a class="code" href="simptcp__lib_8c.html#a5edfb011139988a99c5b355e71a460c8" title="permet l&#39;acces en exclusion mutuelle a la structure simptcp_socket d&#39;un socket Les variables d&#39;etat (...">lock_simptcp_socket</a>(sock);              
+<a name="l00130"></a>00130               
+<a name="l00131"></a>00131               memcpy(&amp;(sock-&gt;<a class="code" href="structsimptcp__socket.html#a8316ece43b0195b957fbd173355a1743">remote_simptcp</a>),&amp;simptcp_remote,slen);
+<a name="l00132"></a>00132               memcpy(&amp;(sock-&gt;<a class="code" href="structsimptcp__socket.html#a0b8e5f399ba10cf414d0f34ae18e2e30">remote_udp</a>),udp_remote,slen);
+<a name="l00133"></a>00133               <a class="code" href="simptcp__lib_8c.html#ac9b0f2aa112753ccbc76779e5a5c7764" title="permet l&#39;acces en exclusion mutuelle a la structure simptcp_socket d&#39;un socket Les variables d&#39;etat (...">unlock_simptcp_socket</a>(sock);    
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135               <span class="keywordflow">return</span> fd;
+<a name="l00136"></a>00136             }
+<a name="l00137"></a>00137         }
+<a name="l00138"></a>00138     }
+<a name="l00139"></a>00139   <span class="comment">/* No match found */</span>
+<a name="l00140"></a>00140 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00141"></a>00141 <span class="preprocessor"></span>  printf(<span class="stringliteral">&quot;No Match found \n&quot;</span>);
+<a name="l00142"></a>00142 <span class="preprocessor">#endif</span>
+<a name="l00143"></a>00143 <span class="preprocessor"></span> <span class="keywordflow">return</span> -1; 
+<a name="l00144"></a>00144 }
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 
+<a name="l00158"></a><a class="code" href="simptcp__entity_8c.html#a1fd41e892f0775676cbdc62ed9d506cb">00158</a> <span class="keywordtype">void</span> * <a class="code" href="simptcp__entity_8c.html#a1fd41e892f0775676cbdc62ed9d506cb" title="handler lance au demarrage de SimpTCP (au lancement de l&#39;application utilisant le service SimpTCP) et...">simptcp_entity_handler</a>()
+<a name="l00159"></a>00159 {
+<a name="l00160"></a>00160   <span class="comment">/* simptcp receive buffer */</span>
+<a name="l00161"></a>00161   <span class="keywordtype">char</span>* buffer =  simptcp_entity.<a class="code" href="structsimptcp.html#af87781a8db69541bce4d6123ccb65dd8">in_buffer</a>; 
+<a name="l00162"></a>00162   <span class="comment">/* udp remotre SAP from which the packet originates */</span>
+<a name="l00163"></a>00163   <span class="keyword">struct </span>sockaddr_in udp_remote; 
+<a name="l00164"></a>00164   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> slen = <span class="keyword">sizeof</span>(<span class="keyword">struct </span>sockaddr_in);
+<a name="l00165"></a>00165   <span class="keywordtype">int</span> fd; <span class="comment">/* simptcp socket file descriptor */</span>
+<a name="l00166"></a>00166   <span class="keyword">struct </span>timeval t0;
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00169"></a>00169 <span class="preprocessor"></span>    printf(<span class="stringliteral">&quot;function %s called\n&quot;</span>, __func__);
+<a name="l00170"></a>00170 <span class="preprocessor">#endif</span>
+<a name="l00171"></a>00171 <span class="preprocessor"></span>
+<a name="l00172"></a>00172   <span class="keywordflow">while</span> (1) {
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174     usleep(10);
+<a name="l00175"></a>00175     <span class="comment">/* check for a new arriving packet */</span>
+<a name="l00176"></a>00176     simptcp_entity.<a class="code" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">in_len</a> = libc_recvfrom(simptcp_entity.<a class="code" href="structsimptcp.html#af055952ce553df4e5161f11638ff950a">udp_fd</a>,buffer, 
+<a name="l00177"></a>00177                                      MAX_SIMPTCP_BUFFER_SIZE,0, 
+<a name="l00178"></a>00178                                       (<span class="keyword">struct</span> sockaddr*) &amp;udp_remote, &amp;slen);
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180     <span class="keywordflow">if</span> (simptcp_entity.<a class="code" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">in_len</a> != -1) {
+<a name="l00181"></a>00181 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00182"></a>00182 <span class="preprocessor"></span>      printf(<span class="stringliteral">&quot;************************************************************\n&quot;</span>
+<a name="l00183"></a>00183              <span class="stringliteral">&quot;Received packet of size %d on %s:%hu\n&quot;</span>,
+<a name="l00184"></a>00184              simptcp_entity.<a class="code" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">in_len</a>, inet_ntoa(udp_remote.sin_addr),
+<a name="l00185"></a>00185              simptcp_get_dport(buffer));
+<a name="l00186"></a>00186 <span class="preprocessor">#endif</span>
+<a name="l00187"></a>00187 <span class="preprocessor"></span>      <span class="comment">/* check if corrupted */</span>
+<a name="l00188"></a>00188       <span class="keywordflow">if</span> (!simptcp_check_checksum(buffer,simptcp_entity.<a class="code" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">in_len</a>)) {
+<a name="l00189"></a>00189 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00190"></a>00190 <span class="preprocessor"></span>        printf(<span class="stringliteral">&quot;Dropping corrupted packet\n&quot;</span>);
+<a name="l00191"></a>00191 <span class="preprocessor">#endif</span>
+<a name="l00192"></a>00192 <span class="preprocessor"></span>        <span class="comment">/* TODO : on pourrait prévoir un memset */</span>
+<a name="l00193"></a>00193         continue ;
+<a name="l00194"></a>00194       }
+<a name="l00195"></a>00195       <span class="keywordflow">else</span> { <span class="comment">/* clean simptcp packet */</span>
+<a name="l00196"></a>00196 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00197"></a>00197 <span class="preprocessor"></span>        simptcp_print_packet(buffer);
+<a name="l00198"></a>00198 <span class="preprocessor">#endif</span>
+<a name="l00199"></a>00199 <span class="preprocessor"></span>        <span class="comment">/* Demultiplex packet */</span>
+<a name="l00200"></a>00200           
+<a name="l00201"></a>00201         <span class="keywordflow">if</span> ((fd=<a class="code" href="simptcp__entity_8c.html#af69e96f64f617993d5453b933536e81f" title="implemente la fonction de demultiplexage de SimpTCP declenchee a l&#39;arrivee d&#39;un PDU SimpTCP...">demultiplex_packet</a>(buffer,&amp;udp_remote)) &gt;=0)
+<a name="l00202"></a>00202           <span class="comment">/* the packets is destined to an open simptcp socket */</span>
+<a name="l00203"></a>00203           simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd]-&gt;<a class="code" href="structsimptcp__socket.html#a8478b244ec3238b1067ba66a9687de1a">socket_state</a>-&gt;process_simptcp_pdu(simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd],buffer,simptcp_entity.<a class="code" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">in_len</a>);
+<a name="l00204"></a>00204       }
+<a name="l00205"></a>00205     }
+<a name="l00206"></a>00206     <span class="comment">//   else if ((simptcp_entity.in_len ==-1) &amp;&amp; (errno != EAGAIN))</span>
+<a name="l00207"></a>00207     <span class="comment">//return -1;</span>
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209     <span class="comment">/* check for timeouts */</span>
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211     <span class="keywordflow">for</span> (fd=0;fd&lt; MAX_OPEN_SOCK;fd++)
+<a name="l00212"></a>00212       {
+<a name="l00213"></a>00213         gettimeofday(&amp;t0,NULL);
+<a name="l00214"></a>00214         <span class="keywordflow">if</span> (((simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd]) != NULL) &amp;&amp;
+<a name="l00215"></a>00215             (<a class="code" href="simptcp__lib_8c.html#a1dbfe45cd13802223324cdc245ed122e" title="Indique si le timer associe a un socket simpTCP est actif ou pas.">has_active_timer</a>(simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd])) &amp;&amp;
+<a name="l00216"></a>00216             (<a class="code" href="simptcp__lib_8c.html#a286a29b6de115a6e078090830a6c570d" title="Indique si la duree mesuree par le timer associe a un socket simpTCP est actifs&#39;est ecoulee ou pas...">is_timeout</a>(simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd])))
+<a name="l00217"></a>00217           {<span class="comment">/* timeout detected on the open socket */</span>
+<a name="l00218"></a>00218             simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd]-&gt;<a class="code" href="structsimptcp__socket.html#a8478b244ec3238b1067ba66a9687de1a">socket_state</a>-&gt;handle_timeout(simptcp_entity.<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[fd]);
+<a name="l00219"></a>00219           }
+<a name="l00220"></a>00220       } 
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222   } <span class="comment">/* while(1) */</span>
+<a name="l00223"></a>00223 }
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225 
+<a name="l00234"></a><a class="code" href="simptcp__entity_8c.html#aaa622a8b57e7d184388f265a1934aace">00234</a> <span class="keywordtype">int</span> <a class="code" href="simptcp__entity_8c.html#aaa622a8b57e7d184388f265a1934aace" title="initialise simptcp control block et lance le handler #simptcp_entity_handle">start_simptcp</a>(<span class="keywordtype">int</span> local_udp)
+<a name="l00235"></a>00235 {    
+<a name="l00236"></a>00236   <span class="keywordtype">int</span> res = -1;
+<a name="l00237"></a>00237   
+<a name="l00238"></a>00238 <span class="preprocessor">#if __DEBUG__</span>
+<a name="l00239"></a>00239 <span class="preprocessor"></span>  printf(<span class="stringliteral">&quot;function %s called\n&quot;</span>, __func__);
+<a name="l00240"></a>00240 <span class="preprocessor">#endif</span>
+<a name="l00241"></a>00241 <span class="preprocessor"></span>        simptcp_entity.<a class="code" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">local_udp</a>.sin_family = AF_INET;
+<a name="l00242"></a>00242         simptcp_entity.<a class="code" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">local_udp</a>.sin_addr.s_addr = htonl(INADDR_ANY);
+<a name="l00243"></a>00243         simptcp_entity.<a class="code" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">local_udp</a>.sin_port = htons(local_udp);
+<a name="l00244"></a>00244         
+<a name="l00245"></a>00245         <span class="comment">/* creation of the underlying UDP socket */</span>
+<a name="l00246"></a>00246         res = libc_socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+<a name="l00247"></a>00247         <span class="keywordflow">if</span> (res &lt; 0) {
+<a name="l00248"></a>00248           perror(<span class="stringliteral">&quot;Creation of UDP socket for simptcp failed&quot;</span>);
+<a name="l00249"></a>00249           <span class="keywordflow">return</span> res;
+<a name="l00250"></a>00250         }    
+<a name="l00251"></a>00251         simptcp_entity.<a class="code" href="structsimptcp.html#af055952ce553df4e5161f11638ff950a">udp_fd</a>=res;
+<a name="l00252"></a>00252         <span class="comment">/* Set socket options: non blockin sys calls */</span>
+<a name="l00253"></a>00253         <a class="code" href="simptcp__entity_8c.html#a02113c8824bad0f80c20102a1756634b" title="Place socket udp utilisé par SimpTCP dans un mode non bloquant (en émission/réception)">set_non_blocking</a>(simptcp_entity.<a class="code" href="structsimptcp.html#af055952ce553df4e5161f11638ff950a">udp_fd</a>); 
+<a name="l00254"></a>00254         
+<a name="l00255"></a>00255         <span class="comment">/* initialiser le numéro de port du socket */</span>
+<a name="l00256"></a>00256         res= libc_bind(simptcp_entity.<a class="code" href="structsimptcp.html#af055952ce553df4e5161f11638ff950a">udp_fd</a>,(<span class="keyword">struct</span> sockaddr *) &amp;simptcp_entity.<a class="code" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">local_udp</a>,<span class="keyword">sizeof</span>(simptcp_entity.<a class="code" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">local_udp</a>) );
+<a name="l00257"></a>00257         <span class="keywordflow">if</span> (res &lt; 0) {
+<a name="l00258"></a>00258       perror(<span class="stringliteral">&quot;bind UDP socket for simptcp failed&quot;</span>);
+<a name="l00259"></a>00259       <span class="keywordflow">return</span> res;
+<a name="l00260"></a>00260         }    
+<a name="l00261"></a>00261         simptcp_entity.<a class="code" href="structsimptcp.html#a4bf65a3f0b6b3f48f430ba01500119a0">simptcp_socket_list</a>=NULL;
+<a name="l00262"></a>00262         simptcp_entity.<a class="code" href="structsimptcp.html#a00ff3a2bdc6813bc884f0e312fcbbe02">simptcp_socket_states</a>=&amp;(simptcp_socket_states);
+<a name="l00263"></a>00263         simptcp_entity.<a class="code" href="structsimptcp.html#ae11fbb9b73b27004d8e42ae1e99b470e">open_simptcp_connections</a>=0;
+<a name="l00264"></a>00264         simptcp_entity.<a class="code" href="structsimptcp.html#a25782b273bc0e5c0401993c29df009d8">open_simptcp_sockets</a>=0;
+<a name="l00265"></a>00265         memset(simptcp_entity.<a class="code" href="structsimptcp.html#af87781a8db69541bce4d6123ccb65dd8">in_buffer</a>, 0,MAX_SIMPTCP_BUFFER_SIZE);   
+<a name="l00266"></a>00266     
+<a name="l00267"></a>00267     
+<a name="l00268"></a>00268         <span class="comment">/* launch a separate process that will execute simptcp_handler in parallel</span>
+<a name="l00269"></a>00269 <span class="comment">         * to the main program (client/server)</span>
+<a name="l00270"></a>00270 <span class="comment">         */</span>
+<a name="l00271"></a>00271         res = pthread_create(&amp;(simptcp_entity.<a class="code" href="structsimptcp.html#ad9d525c8966d0ac6cfc5c39494cc95f2">simptcp_handler</a>), NULL, 
+<a name="l00272"></a>00272                              <a class="code" href="simptcp__entity_8c.html#a1fd41e892f0775676cbdc62ed9d506cb" title="handler lance au demarrage de SimpTCP (au lancement de l&#39;application utilisant le service SimpTCP) et...">simptcp_entity_handler</a>, NULL);
+<a name="l00273"></a>00273         <span class="keywordflow">if</span> (res &lt; 0) {
+<a name="l00274"></a>00274           perror(<span class="stringliteral">&quot;Unable to create core handler&quot;</span>);
+<a name="l00275"></a>00275           <span class="keywordflow">return</span> -1;
+<a name="l00276"></a>00276         } 
+<a name="l00277"></a>00277     
+<a name="l00278"></a>00278         <span class="keywordflow">return</span> res;
+<a name="l00279"></a>00279 }
+<a name="l00280"></a>00280 
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284 
+<a name="l00285"></a>00285 <span class="comment">/* vim: set expandtab ts=4 sw=4 tw=80: */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

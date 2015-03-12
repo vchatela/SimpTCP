@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP: Référence de la structure simptcp_socket</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la structure simptcp_socket</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="simptcp_socket" -->
+<p>structure regroupant toutes les variables d'etat specifiques a un socket simpTCP  
+ <a href="structsimptcp__socket.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#ae02f94c3fd768243e043f1a24b4f80b2">socket_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#ab9bebd65e8b4c9db5c4e1a3139c6267c">new_conn_req</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a706479a7e1ff043463267481669ba218">pending_conn_req</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a2e2370c3ed1e2a44b455f467b22ea3fc">max_conn_req_backlog</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a06e621718f310613f27789e3d2d7fd8a">local_simptcp</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a8316ece43b0195b957fbd173355a1743">remote_simptcp</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a0b8e5f399ba10cf414d0f34ae18e2e30">remote_udp</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsimptcp__socket__state__funcs.html">simptcp_socket_state_funcs</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a8478b244ec3238b1067ba66a9687de1a">socket_state</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a078e4393b2d006bdf9f3cbae6002ca7f">socket_state_sender</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a29e20f0b22e0999f8d297c6dda714cda">next_seq_num</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#ad4a509575e4ea82031905e69d31929a7">out_buffer</a> [SIMPTCP_SOCKET_MAX_BUFFER_SIZE]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a1635b04342480ddd60a19742d6ada510">out_len</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a738283bc5a59a3d8e30e257b985d97bf">nbr_retransmit</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a4e714cf02316f441b9a39d70d50a512a">timer_duration</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct timeval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#aeb6a92c8b7dd620842b6276cfde7f3c8">timeout</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#a549dc6eff84a525ae6907c7632497173">socket_state_receiver</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#af401aec76c9d63330addd74d6db18446">next_ack_num</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#ad808537c29abfccecf50290253bca910">in_buffer</a> [SIMPTCP_SOCKET_MAX_BUFFER_SIZE]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#ae33b7620c405183bd4bc05377d165d35">in_len</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32b6642968bf67c9bcbe1f4fc12ca26b"></a><!-- doxytag: member="simptcp_socket::simptcp_send_count" ref="a32b6642968bf67c9bcbe1f4fc12ca26b" args="" -->
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>simptcp_send_count</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acdfb1ab6930d2d65ae6882e8e30e8961"></a><!-- doxytag: member="simptcp_socket::simptcp_receive_count" ref="acdfb1ab6930d2d65ae6882e8e30e8961" args="" -->
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>simptcp_receive_count</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3ca599e7a75703f7dda5a79e2655367"></a><!-- doxytag: member="simptcp_socket::simptcp_in_errors_count" ref="af3ca599e7a75703f7dda5a79e2655367" args="" -->
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>simptcp_in_errors_count</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a848084176dd3de23adf0c8868737b701"></a><!-- doxytag: member="simptcp_socket::simptcp_retransmit_count" ref="a848084176dd3de23adf0c8868737b701" args="" -->
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>simptcp_retransmit_count</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0978fde9cb07875069e034322150c96a"></a><!-- doxytag: member="simptcp_socket::sending_window_size" ref="a0978fde9cb07875069e034322150c96a" args="" -->
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>sending_window_size</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4604e64e92e83273e8cbedec2c198fb"></a><!-- doxytag: member="simptcp_socket::sending_window_base" ref="ae4604e64e92e83273e8cbedec2c198fb" args="" -->
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>sending_window_base</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a85973548e627f100ae578ba41c020b1f"></a><!-- doxytag: member="simptcp_socket::receiving_window_size" ref="a85973548e627f100ae578ba41c020b1f" args="" -->
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>receiving_window_size</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7fb88019526686827b3b99ef159766c"></a><!-- doxytag: member="simptcp_socket::receiving_window_base" ref="aa7fb88019526686827b3b99ef159766c" args="" -->
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>receiving_window_base</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a862cb6b92b4ae589d2abff1a00871f9e"></a><!-- doxytag: member="simptcp_socket::rtt_estimate" ref="a862cb6b92b4ae589d2abff1a00871f9e" args="" -->
+double&#160;</td><td class="memItemRight" valign="bottom"><b>rtt_estimate</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a445b3e326df0584ba1c61de3e19c5c6b"></a><!-- doxytag: member="simptcp_socket::last_rtt" ref="a445b3e326df0584ba1c61de3e19c5c6b" args="" -->
+double&#160;</td><td class="memItemRight" valign="bottom"><b>last_rtt</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html#adaf30c06b61eed438905abc8bfc2be54">mutex_socket</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>structure regroupant toutes les variables d'etat specifiques a un socket simpTCP </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00070">70</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+</div><hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="ad808537c29abfccecf50290253bca910"></a><!-- doxytag: member="simptcp_socket::in_buffer" ref="ad808537c29abfccecf50290253bca910" args="[SIMPTCP_SOCKET_MAX_BUFFER_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="structsimptcp__socket.html#ad808537c29abfccecf50290253bca910">simptcp_socket::in_buffer</a>[SIMPTCP_SOCKET_MAX_BUFFER_SIZE]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>SimpTCP socket Receive buffer used to store ingoing SimpTCP PDUs </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00112">112</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae33b7620c405183bd4bc05377d165d35"></a><!-- doxytag: member="simptcp_socket::in_len" ref="ae33b7620c405183bd4bc05377d165d35" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="structsimptcp__socket.html#ae33b7620c405183bd4bc05377d165d35">simptcp_socket::in_len</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>instantaneous in_buffer occupation </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00115">115</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06e621718f310613f27789e3d2d7fd8a"></a><!-- doxytag: member="simptcp_socket::local_simptcp" ref="a06e621718f310613f27789e3d2d7fd8a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct sockaddr_in <a class="el" href="structsimptcp__socket.html#a06e621718f310613f27789e3d2d7fd8a">simptcp_socket::local_simptcp</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>local simptcp SAP address </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00083">83</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2e2370c3ed1e2a44b455f467b22ea3fc"></a><!-- doxytag: member="simptcp_socket::max_conn_req_backlog" ref="a2e2370c3ed1e2a44b455f467b22ea3fc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structsimptcp__socket.html#a2e2370c3ed1e2a44b455f467b22ea3fc">simptcp_socket::max_conn_req_backlog</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>this is fixed with sys call listen </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00080">80</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adaf30c06b61eed438905abc8bfc2be54"></a><!-- doxytag: member="simptcp_socket::mutex_socket" ref="adaf30c06b61eed438905abc8bfc2be54" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pthread_mutex_t <a class="el" href="structsimptcp__socket.html#adaf30c06b61eed438905abc8bfc2be54">simptcp_socket::mutex_socket</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>mutex to control the write-access to this block contening processes : primitives called by the application vs simptcp protocol entity </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00142">142</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, <a class="el" href="simptcp__lib_8c_source.html#l00215">lock_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00235">unlock_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a738283bc5a59a3d8e30e257b985d97bf"></a><!-- doxytag: member="simptcp_socket::nbr_retransmit" ref="a738283bc5a59a3d8e30e257b985d97bf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="structsimptcp__socket.html#a738283bc5a59a3d8e30e257b985d97bf">simptcp_socket::nbr_retransmit</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>number of times first unacked message retransmitted (limited to 255) </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00101">101</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab9bebd65e8b4c9db5c4e1a3139c6267c"></a><!-- doxytag: member="simptcp_socket::new_conn_req" ref="ab9bebd65e8b4c9db5c4e1a3139c6267c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a>* <a class="el" href="structsimptcp__socket.html#ab9bebd65e8b4c9db5c4e1a3139c6267c">simptcp_socket::new_conn_req</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>remote SAPs of backlogged connection requests received on a listening socket - used by sys call accept to set up new connections </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00074">74</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af401aec76c9d63330addd74d6db18446"></a><!-- doxytag: member="simptcp_socket::next_ack_num" ref="af401aec76c9d63330addd74d6db18446" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="structsimptcp__socket.html#af401aec76c9d63330addd74d6db18446">simptcp_socket::next_ack_num</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Next ack number </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00111">111</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a29e20f0b22e0999f8d297c6dda714cda"></a><!-- doxytag: member="simptcp_socket::next_seq_num" ref="a29e20f0b22e0999f8d297c6dda714cda" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="structsimptcp__socket.html#a29e20f0b22e0999f8d297c6dda714cda">simptcp_socket::next_seq_num</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Next sequence number </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00096">96</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4a509575e4ea82031905e69d31929a7"></a><!-- doxytag: member="simptcp_socket::out_buffer" ref="ad4a509575e4ea82031905e69d31929a7" args="[SIMPTCP_SOCKET_MAX_BUFFER_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="structsimptcp__socket.html#ad4a509575e4ea82031905e69d31929a7">simptcp_socket::out_buffer</a>[SIMPTCP_SOCKET_MAX_BUFFER_SIZE]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>SimpTCP socket Transmit buffer used to store outgoing SimpTCP PDUs </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00097">97</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1635b04342480ddd60a19742d6ada510"></a><!-- doxytag: member="simptcp_socket::out_len" ref="a1635b04342480ddd60a19742d6ada510" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="structsimptcp__socket.html#a1635b04342480ddd60a19742d6ada510">simptcp_socket::out_len</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>instantaneous out_buffer occupation </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00100">100</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a706479a7e1ff043463267481669ba218"></a><!-- doxytag: member="simptcp_socket::pending_conn_req" ref="a706479a7e1ff043463267481669ba218" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structsimptcp__socket.html#a706479a7e1ff043463267481669ba218">simptcp_socket::pending_conn_req</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>number of pending syn requests. For simplicity, assume 1 </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00077">77</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8316ece43b0195b957fbd173355a1743"></a><!-- doxytag: member="simptcp_socket::remote_simptcp" ref="a8316ece43b0195b957fbd173355a1743" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct sockaddr_in <a class="el" href="structsimptcp__socket.html#a8316ece43b0195b957fbd173355a1743">simptcp_socket::remote_simptcp</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>remote simptcp SAP address </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00084">84</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b8e5f399ba10cf414d0f34ae18e2e30"></a><!-- doxytag: member="simptcp_socket::remote_udp" ref="a0b8e5f399ba10cf414d0f34ae18e2e30" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct sockaddr_in <a class="el" href="structsimptcp__socket.html#a0b8e5f399ba10cf414d0f34ae18e2e30">simptcp_socket::remote_udp</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>remote UDP SAP address </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00087">87</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8478b244ec3238b1067ba66a9687de1a"></a><!-- doxytag: member="simptcp_socket::socket_state" ref="a8478b244ec3238b1067ba66a9687de1a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsimptcp__socket__state__funcs.html">simptcp_socket_state_funcs</a>* <a class="el" href="structsimptcp__socket.html#a8478b244ec3238b1067ba66a9687de1a">simptcp_socket::socket_state</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>socket state + functions that can be called at the current state </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00090">90</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>, et <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a549dc6eff84a525ae6907c7632497173"></a><!-- doxytag: member="simptcp_socket::socket_state_receiver" ref="a549dc6eff84a525ae6907c7632497173" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short <a class="el" href="structsimptcp__socket.html#a549dc6eff84a525ae6907c7632497173">simptcp_socket::socket_state_receiver</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>receiver side FSM describing the data transfer phase </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00109">109</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a078e4393b2d006bdf9f3cbae6002ca7f"></a><!-- doxytag: member="simptcp_socket::socket_state_sender" ref="a078e4393b2d006bdf9f3cbae6002ca7f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short <a class="el" href="structsimptcp__socket.html#a078e4393b2d006bdf9f3cbae6002ca7f">simptcp_socket::socket_state_sender</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>sender side FSM describing the data transfer phase (started during TD) </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00094">94</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae02f94c3fd768243e043f1a24b4f80b2"></a><!-- doxytag: member="simptcp_socket::socket_type" ref="ae02f94c3fd768243e043f1a24b4f80b2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short <a class="el" href="structsimptcp__socket.html#ae02f94c3fd768243e043f1a24b4f80b2">simptcp_socket::socket_type</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>SimpTCP socket type (<a class="el" href="simptcp__lib_8h.html#a4b344e9d184b004d7e5d04bf5c4cc4fa" title="simptcp socket types; socket of type listening_server waits for connection requests">socket_types</a>): either client, listening or server socket </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00072">72</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeb6a92c8b7dd620842b6276cfde7f3c8"></a><!-- doxytag: member="simptcp_socket::timeout" ref="aeb6a92c8b7dd620842b6276cfde7f3c8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct timeval <a class="el" href="structsimptcp__socket.html#aeb6a92c8b7dd620842b6276cfde7f3c8">simptcp_socket::timeout</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Expected timeout for last unacked packet </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00106">106</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00285">has_active_timer()</a>, <a class="el" href="simptcp__lib_8c_source.html#l00295">is_timeout()</a>, <a class="el" href="simptcp__lib_8c_source.html#l00252">start_timer()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00270">stop_timer()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e714cf02316f441b9a39d70d50a512a"></a><!-- doxytag: member="simptcp_socket::timer_duration" ref="a4e714cf02316f441b9a39d70d50a512a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structsimptcp__socket.html#a4e714cf02316f441b9a39d70d50a512a">simptcp_socket::timer_duration</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>expressed in ms, normally derived from estimated_rtt </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00105">105</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>inc/<a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

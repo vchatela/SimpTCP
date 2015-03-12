@@ -1,0 +1,151 @@
+/*! \file Simptcp_packet.h
+*  \brief{Defines  the simptcp pdu's generic header and associated methods}
+* \author{DGEI-INSAT 2010-2011}
+*/
+#ifndef _SIMPTCP_PACKET_H_
+#define _SIMPTCP_PACKET_H_
+
+/* Definition des valeurs que peut prendre le champ flags du PDU SimpTCP */
+
+/*!
+ *  \def SYN
+ * Le flag SYN, établissement  de connexion
+ */
+#define SYN   		0x01
+
+/*! 
+ * \def ACK
+ * Le flag ACK, pour un acquittement
+ */
+#define ACK   		0x02
+
+/*!
+ *  \def FIN
+ * Le flag FIN, fin de connexion
+ */
+#define FIN   		0x04
+
+/*!
+ * \def RST
+ * Le flag RST, pour un reset
+ */
+#define RST  		0x08
+
+/*! 
+ * \def SIMPTCP_GHEADER_SIZE
+ * Taille en octets de l'en-tête générique (Sans option) du PDU SimpTCP
+ */
+#define SIMPTCP_GHEADER_SIZE 	(sizeof (struct simptcp_generic_header))
+
+#define ETH_MTU 1500 /* Ethernet Max transmit Unit */
+
+/*! \def SIMPTCP_MAX_SIZE
+ * \brief Taille maximale de la charge utile d'un PDU SimpTCP 
+ * pour éviter fragmentation IP sur un réseau physique
+ * de type Ethernetto avoid IP  
+*/
+#define SIMPTCP_MAX_SIZE (ETH_MTU-SIMPTCP_GHEADER_SIZE-20-8) 
+
+
+
+/*! \struct simptcp_generic_header
+ * \brief simptcp pdu's generic header
+*/
+
+typedef struct simptcp_generic_header
+{
+  u_int16_t sport;  /*!< source port number */
+  u_int16_t dport; /*!< destination port number */
+  u_int16_t seq_num; /*!< numbers the next simptcp_packet to send 
+ simptcp uses packet numbering not byte numbering */
+  u_int16_t ack_num; /*!< numbers the next awaited simptcp packet  */
+  unsigned char  header_len; /* header length in bytes - avoids padding */
+  unsigned char flags; /*!< Les flags, voir #SYN #ACK ..*/
+  u_int16_t total_len; /*!< simptcp packet's total length in bytes */
+  u_int16_t window_size; /* available buffer space at the receiver (in bytes) */
+  u_int16_t checksum; /*!< Checksum computed over tyhe whole simptcp packet */
+} simptcp_generic_header;
+
+
+/* simptcp options -  
+   refer to [RFC793] for Maximum segment size option;
+   [RFC2018] for Selective ACK option; [RFC1323] for timestamp option  
+   could be extended to cope with other options
+*/
+#define SIMPTCP_NO_OPTIONS 0
+#define SIMPTCP_MSS_OPTION 2
+#define SIMPTCP_SACK_OPTION 4
+#define SIMPTCP_TS_OPTION 8
+
+/*! 
+ * \brief structure relative a la declarartion
+ * de la presence d'une option dans le PDU
+ * SimpTCP. Plusieurs options peuvent être 
+ * presentes dans un même PDU. Un option header
+ * par option suivra l'en-tete generique du PDU
+ * SimpTCP. Les valeurs des options sont placees
+ * a la suite des en-tetes declarant les options
+ */
+typedef struct simptcp_option_header
+{
+  unsigned char option_kind;  /*!< defines the option, could be timestamp, selective ack,.. */
+  unsigned char option_len; /*!< option length in bytes */
+}simptcp_option_header;
+
+
+
+
+/*
+ * prototypes des methodes elementaires permettant 
+ * de construire le PDU SimpTCP ou d'extraire des
+ * informations du PDU SimpTCP. Certaines methodes
+ * permettent egalement d'afficher sur la sortie 
+ * standard le contenu du PDU
+*/
+
+void    simptcp_set_sport (char *buffer, u_int16_t sport);
+u_int16_t simptcp_get_sport (const char *buffer);
+
+void    simptcp_set_dport (char *buffer, u_int16_t dport);
+u_int16_t simptcp_get_dport (const char *buffer);
+
+void    simptcp_set_flags  (char *buffer, unsigned char flags);
+unsigned char  simptcp_get_flags  (const char *buffer);
+
+void    simptcp_set_seq_num   (char *buffer, u_int16_t seq);
+u_int16_t   simptcp_get_seq_num   (const char *buffer);
+
+void    simptcp_set_ack_num   (char *buffer, u_int16_t ack);
+u_int16_t   simptcp_get_ack_num   (const char *buffer);
+
+void    simptcp_set_head_len   (char *buffer, unsigned char hlen);
+unsigned char   simptcp_get_head_len   (const char *buffer);
+
+void    simptcp_set_total_len   (char *buffer, u_int16_t tlen);
+u_int16_t   simptcp_get_total_len   (const char *buffer);
+
+void    simptcp_set_win_size   (char *buffer, u_int16_t size);
+u_int16_t   simptcp_get_win_size   (const char *buffer);
+
+
+u_int16_t   simptcp_get_checksum   (const char *buffer);
+void simptcp_add_checksum (char *buffer, int len);
+int simptcp_check_checksum(char *buffer, int len);
+
+u_int16_t simptcp_extract_data (char * pdu, void * payload);
+
+void simptcp_print_packet (char * buf);
+
+char* simptcp_make_pdu(
+  struct sockaddr_in* src,
+  struct sockaddr_in* dst,
+  void * payload,
+  u_int16_t payload_len,
+  u_int16_t seq_num, 
+  u_int16_t ack_num,
+  unsigned char flags);
+
+
+#endif /* _SIMPTCP_PACKET_H_ */
+
+/* vim: set expandtab ts=4 sw=4 tw=80: */

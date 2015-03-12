@@ -1,0 +1,894 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP: Référence du fichier src/simptcp_packet.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier src/simptcp_packet.c</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;netinet/in.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="term__colors_8h_source.html">term_colors.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="term__io_8h_source.html">term_io.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>&gt;</code><br/>
+</div>
+<p><a href="simptcp__packet_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#ab6d1dc91b0cc910c0b9f0e2b8cc12da7">__PREFIX__</a>&#160;&#160;&#160;&quot;[&quot; COLOR(&quot;SIMTCP_PKT&quot;, BRIGHT_GREEN) &quot;  ] &quot;</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a928bcd4ed1ca26fa864fe5516efa2b20">__DEBUG__</a>&#160;&#160;&#160;1</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a1940b74d1011aed350722a97c7898c6e">simptcp_set_sport</a> (char *buffer, u_int16_t sport)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le champ sport (source port) du PDU SimpTCP a sport  <a href="#a1940b74d1011aed350722a97c7898c6e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a06d2a9656fb56337b61aa1ba3583f893">simptcp_get_sport</a> (const char *buffer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi la valeur du champ sport (source port) du PDU SimpTCP  <a href="#a06d2a9656fb56337b61aa1ba3583f893"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a28d474a919b11d797ee57e680cf5cda7">simptcp_set_dport</a> (char *buffer, u_int16_t dport)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le champ dport (destination port) du PDU SimpTCP a dport  <a href="#a28d474a919b11d797ee57e680cf5cda7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a6505a22c9bef10f8ced7e858e7df4291">simptcp_get_dport</a> (const char *buffer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi la valeur du champ dport (destination port) du PDU SimpTCP  <a href="#a6505a22c9bef10f8ced7e858e7df4291"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a05a1cbe8a13002199de4b616ad062d1f">simptcp_set_flags</a> (char *buffer, u_char flags)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le champ flags du PDU SimpTCP a flags  <a href="#a05a1cbe8a13002199de4b616ad062d1f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a87ee432ccadfd132c8b4af8c7afc2614">simptcp_get_flags</a> (const char *buffer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#ae6977226b7ed4da4244c6744eacd564b">simptcp_set_seq_num</a> (char *buffer, u_int16_t seq)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le champ seq_num du PDU SimpTCP a seq  <a href="#ae6977226b7ed4da4244c6744eacd564b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#ae93f7147e63df43d14252d1e86822eaa">simptcp_get_seq_num</a> (const char *buffer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#ab79d3aa1421d7985de8c5edb5f49b3ee">simptcp_set_ack_num</a> (char *buffer, u_int16_t ack)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le champ ack_num du PDU SimpTCP a ack  <a href="#ab79d3aa1421d7985de8c5edb5f49b3ee"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a5455e9e507c7d52e8375f9371b78383d">simptcp_get_ack_num</a> (const char *buffer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#afbe2b0b686e61ceb29443223eed76fb3">simptcp_set_head_len</a> (char *buffer, unsigned char hlen)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le champ header_len du PDU SimpTCP a hlen  <a href="#afbe2b0b686e61ceb29443223eed76fb3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#aca8a70eeaa55defb6a3e40373bd8b60d">simptcp_get_head_len</a> (const char *buffer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi la valeur du champ header_len du PDU SimpTCP  <a href="#aca8a70eeaa55defb6a3e40373bd8b60d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#ac0493f008eef7fce032d5917665818a7">simptcp_set_total_len</a> (char *buffer, u_int16_t tlen)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a6e0a075d9c2733ab44f3408dc1a94891">simptcp_get_total_len</a> (const char *buffer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi la valeur du champ total_len du PDU SimpTCP  <a href="#a6e0a075d9c2733ab44f3408dc1a94891"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a904f0e5dd4efebcc2e46ed9fd47edbea">simptcp_set_win_size</a> (char *buffer, u_int16_t size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le champ window_size du PDU SimpTCP a size  <a href="#a904f0e5dd4efebcc2e46ed9fd47edbea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a08c4a2e84c4a2d1f6475001c6b011132">simptcp_get_win_size</a> (const char *buffer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a73a1b5eb6a495c2018687972cc6ed83b">simptcp_get_checksum</a> (const char *buffer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi la valeur du champ checksum du PDU SimpTCP  <a href="#a73a1b5eb6a495c2018687972cc6ed83b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#ae254ff94a01e9cd584c6e56b71832c26">simptcp_add_checksum</a> (char *buffer, int len)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">calculer le checksum sur le PDU et rajouter la valeur calculee <br/>
+ au champ checksum du PDU Adds checksum to a simptcp_packet of legth len  <a href="#ae254ff94a01e9cd584c6e56b71832c26"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#ad838acd70bbe187b3b87ce5d19881165">simptcp_check_checksum</a> (char *buffer, int len)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verifie la validite du champ checksum d'un PDU simpTCP recu  <a href="#ad838acd70bbe187b3b87ce5d19881165"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a804c77434ea97b85c19fac1f3ef13004">simptcp_extract_data</a> (char *pdu, void *payload)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">extrait la charge utile d'un PDU SimpTCP  <a href="#a804c77434ea97b85c19fac1f3ef13004"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a2bb1808152a7bc7a6b594f22fe3aa0f2">simptcp_lprint_packet</a> (char *buf)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour afficher un paquet.  <a href="#a2bb1808152a7bc7a6b594f22fe3aa0f2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__packet_8c.html#a5b93df5f70f4b3efd65d4a8a06dde2a1">simptcp_print_packet</a> (char *buf)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour afficher de maniere synthetique, sur une ligne, un paquet.  <a href="#a5b93df5f70f4b3efd65d4a8a06dde2a1"></a><br/></td></tr>
+</table>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a928bcd4ed1ca26fa864fe5516efa2b20"></a><!-- doxytag: member="simptcp_packet.c::__DEBUG__" ref="a928bcd4ed1ca26fa864fe5516efa2b20" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __DEBUG__&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00018">18</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab6d1dc91b0cc910c0b9f0e2b8cc12da7"></a><!-- doxytag: member="simptcp_packet.c::__PREFIX__" ref="ab6d1dc91b0cc910c0b9f0e2b8cc12da7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __PREFIX__&#160;&#160;&#160;&quot;[&quot; COLOR(&quot;SIMTCP_PKT&quot;, BRIGHT_GREEN) &quot;  ] &quot;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00011">11</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ae254ff94a01e9cd584c6e56b71832c26"></a><!-- doxytag: member="simptcp_packet.c::simptcp_add_checksum" ref="ae254ff94a01e9cd584c6e56b71832c26" args="(char *buffer, int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_add_checksum </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calculer le checksum sur le PDU et rajouter la valeur calculee <br/>
+ au champ checksum du PDU Adds checksum to a simptcp_packet of legth len </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simpTCP a envoyer </td></tr>
+    <tr><td class="paramname">len</td><td>taille totale du PDU simpTCP a envoyer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00277">277</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__packet_8h_source.html#l00066">simptcp_generic_header::checksum</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad838acd70bbe187b3b87ce5d19881165"></a><!-- doxytag: member="simptcp_packet.c::simptcp_check_checksum" ref="ad838acd70bbe187b3b87ce5d19881165" args="(char *buffer, int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int simptcp_check_checksum </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>verifie la validite du champ checksum d'un PDU simpTCP recu </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simpTCP a envoyer </td></tr>
+    <tr><td class="paramname">len</td><td>taille totale du PDU simpTCP a envoyer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>1 si checksum OK, 0 sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00309">309</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__packet_8h_source.html#l00066">simptcp_generic_header::checksum</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a804c77434ea97b85c19fac1f3ef13004"></a><!-- doxytag: member="simptcp_packet.c::simptcp_extract_data" ref="a804c77434ea97b85c19fac1f3ef13004" args="(char *pdu, void *payload)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t simptcp_extract_data </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pdu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>payload</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>extrait la charge utile d'un PDU SimpTCP </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdu</td><td>pointeur sur PDU simpTCP a envoyer </td></tr>
+    <tr><td class="paramname">payload</td><td>pointeur sur la charge utile </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>la taille en octets de la charge utile </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00341">341</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__packet_8c_source.html#l00192">simptcp_get_head_len()</a>, et <a class="el" href="simptcp__packet_8c_source.html#l00220">simptcp_get_total_len()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5455e9e507c7d52e8375f9371b78383d"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_ack_num" ref="a5455e9e507c7d52e8375f9371b78383d" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t simptcp_get_ack_num </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00164">164</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__packet_8c_source.html#l00375">simptcp_lprint_packet()</a>, et <a class="el" href="simptcp__packet_8c_source.html#l00421">simptcp_print_packet()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a73a1b5eb6a495c2018687972cc6ed83b"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_checksum" ref="a73a1b5eb6a495c2018687972cc6ed83b" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_get_checksum </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>renvoi la valeur du champ checksum du PDU SimpTCP </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>valeur du champ checksum du PDU </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00262">262</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6505a22c9bef10f8ced7e858e7df4291"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_dport" ref="a6505a22c9bef10f8ced7e858e7df4291" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t simptcp_get_dport </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>renvoi la valeur du champ dport (destination port) du PDU SimpTCP </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>numero de port destination du PDU </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00079">79</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00375">simptcp_lprint_packet()</a>, et <a class="el" href="simptcp__packet_8c_source.html#l00421">simptcp_print_packet()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a87ee432ccadfd132c8b4af8c7afc2614"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_flags" ref="a87ee432ccadfd132c8b4af8c7afc2614" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char simptcp_get_flags </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00107">107</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__packet_8c_source.html#l00375">simptcp_lprint_packet()</a>, et <a class="el" href="simptcp__packet_8c_source.html#l00421">simptcp_print_packet()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aca8a70eeaa55defb6a3e40373bd8b60d"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_head_len" ref="aca8a70eeaa55defb6a3e40373bd8b60d" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_get_head_len </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>renvoi la valeur du champ header_len du PDU SimpTCP </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>valeur du champ Header_len du PDU </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00192">192</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__packet_8c_source.html#l00341">simptcp_extract_data()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00375">simptcp_lprint_packet()</a>, et <a class="el" href="simptcp__packet_8c_source.html#l00421">simptcp_print_packet()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae93f7147e63df43d14252d1e86822eaa"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_seq_num" ref="ae93f7147e63df43d14252d1e86822eaa" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t simptcp_get_seq_num </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00136">136</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__packet_8c_source.html#l00375">simptcp_lprint_packet()</a>, et <a class="el" href="simptcp__packet_8c_source.html#l00421">simptcp_print_packet()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06d2a9656fb56337b61aa1ba3583f893"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_sport" ref="a06d2a9656fb56337b61aa1ba3583f893" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t simptcp_get_sport </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>renvoi la valeur du champ sport (source port) du PDU SimpTCP </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>numero de port source du PDU </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00051">51</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00375">simptcp_lprint_packet()</a>, et <a class="el" href="simptcp__packet_8c_source.html#l00421">simptcp_print_packet()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6e0a075d9c2733ab44f3408dc1a94891"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_total_len" ref="a6e0a075d9c2733ab44f3408dc1a94891" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_get_total_len </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>renvoi la valeur du champ total_len du PDU SimpTCP </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>valeur du champ total_len du PDU </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00220">220</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__packet_8c_source.html#l00341">simptcp_extract_data()</a>, et <a class="el" href="simptcp__packet_8c_source.html#l00421">simptcp_print_packet()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a08c4a2e84c4a2d1f6475001c6b011132"></a><!-- doxytag: member="simptcp_packet.c::simptcp_get_win_size" ref="a08c4a2e84c4a2d1f6475001c6b011132" args="(const char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t simptcp_get_win_size </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00248">248</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2bb1808152a7bc7a6b594f22fe3aa0f2"></a><!-- doxytag: member="simptcp_packet.c::simptcp_lprint_packet" ref="a2bb1808152a7bc7a6b594f22fe3aa0f2" args="(char *buf)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_lprint_packet </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction pour afficher un paquet. </p>
+<p>Le paquet sera affiché sur la sortie standard dans la forme d'un datagramme. Les Flags sont représentés par leur première lettre :<br/>
+ SYN -&gt; S ; ACK -&gt; A ; FIN -&gt; F ; DT -&gt; D ; RT -&gt; R.<br/>
+ Le PDU est affiché de la maniere suivante : </p>
+<pre>
+ +----------------+-----------------+-------------------+
+ | Seqnum :    12 | Acknum :     0  | Flags : |S| | | | |
+ +----------------+-----------------+-------------------+
+ | Data :     Demande de connection | Checksum :  2036  |
+ +----------------------------------+-------------------+
+ </pre> <dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>PDU SimpTCP a afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00375">375</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__packet_8h_source.html#l00020">ACK</a>, <a class="el" href="simptcp__packet_8h_source.html#l00032">RST</a>, <a class="el" href="simptcp__packet_8c_source.html#l00164">simptcp_get_ack_num()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00079">simptcp_get_dport()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00107">simptcp_get_flags()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00192">simptcp_get_head_len()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00136">simptcp_get_seq_num()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00051">simptcp_get_sport()</a>, et <a class="el" href="simptcp__packet_8h_source.html#l00014">SYN</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5b93df5f70f4b3efd65d4a8a06dde2a1"></a><!-- doxytag: member="simptcp_packet.c::simptcp_print_packet" ref="a5b93df5f70f4b3efd65d4a8a06dde2a1" args="(char *buf)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_print_packet </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction pour afficher de maniere synthetique, sur une ligne, un paquet. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>PDU SimpTCP a afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00421">421</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__packet_8h_source.html#l00020">ACK</a>, <a class="el" href="simptcp__packet_8h_source.html#l00032">RST</a>, <a class="el" href="simptcp__packet_8c_source.html#l00164">simptcp_get_ack_num()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00079">simptcp_get_dport()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00107">simptcp_get_flags()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00192">simptcp_get_head_len()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00136">simptcp_get_seq_num()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00051">simptcp_get_sport()</a>, <a class="el" href="simptcp__packet_8c_source.html#l00220">simptcp_get_total_len()</a>, et <a class="el" href="simptcp__packet_8h_source.html#l00014">SYN</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab79d3aa1421d7985de8c5edb5f49b3ee"></a><!-- doxytag: member="simptcp_packet.c::simptcp_set_ack_num" ref="ab79d3aa1421d7985de8c5edb5f49b3ee" args="(char *buffer, u_int16_t ack)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_set_ack_num </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u_int16_t&#160;</td>
+          <td class="paramname"><em>ack</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>initialise le champ ack_num du PDU SimpTCP a ack </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+    <tr><td class="paramname">ack</td><td>numero d'acquittement </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00150">150</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a28d474a919b11d797ee57e680cf5cda7"></a><!-- doxytag: member="simptcp_packet.c::simptcp_set_dport" ref="a28d474a919b11d797ee57e680cf5cda7" args="(char *buffer, u_int16_t dport)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_set_dport </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u_int16_t&#160;</td>
+          <td class="paramname"><em>dport</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>initialise le champ dport (destination port) du PDU SimpTCP a dport </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+    <tr><td class="paramname">dport</td><td>numero de port destination </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00065">65</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a05a1cbe8a13002199de4b616ad062d1f"></a><!-- doxytag: member="simptcp_packet.c::simptcp_set_flags" ref="a05a1cbe8a13002199de4b616ad062d1f" args="(char *buffer, u_char flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_set_flags </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u_char&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>initialise le champ flags du PDU SimpTCP a flags </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+    <tr><td class="paramname">flags</td><td>englobe la valeur des 7 flags (<a class="el" href="simptcp__packet_8h.html#ac308f791cb614491543a25397641e86e">SYN</a>, <a class="el" href="simptcp__packet_8h.html#a6f6489887e08bff4887d0bc5dcf214d8">ACK</a>, ..) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00093">93</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afbe2b0b686e61ceb29443223eed76fb3"></a><!-- doxytag: member="simptcp_packet.c::simptcp_set_head_len" ref="afbe2b0b686e61ceb29443223eed76fb3" args="(char *buffer, unsigned char hlen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_set_head_len </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>hlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>initialise le champ header_len du PDU SimpTCP a hlen </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+    <tr><td class="paramname">hlen</td><td>taille de l'en-tete </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00178">178</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae6977226b7ed4da4244c6744eacd564b"></a><!-- doxytag: member="simptcp_packet.c::simptcp_set_seq_num" ref="ae6977226b7ed4da4244c6744eacd564b" args="(char *buffer, u_int16_t seq)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_set_seq_num </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u_int16_t&#160;</td>
+          <td class="paramname"><em>seq</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>initialise le champ seq_num du PDU SimpTCP a seq </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+    <tr><td class="paramname">seq</td><td>numero de sequence </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00121">121</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1940b74d1011aed350722a97c7898c6e"></a><!-- doxytag: member="simptcp_packet.c::simptcp_set_sport" ref="a1940b74d1011aed350722a97c7898c6e" args="(char *buffer, u_int16_t sport)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_set_sport </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u_int16_t&#160;</td>
+          <td class="paramname"><em>sport</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>initialise le champ sport (source port) du PDU SimpTCP a sport </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+    <tr><td class="paramname">sport</td><td>numero de port source </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00037">37</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac0493f008eef7fce032d5917665818a7"></a><!-- doxytag: member="simptcp_packet.c::simptcp_set_total_len" ref="ac0493f008eef7fce032d5917665818a7" args="(char *buffer, u_int16_t tlen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_set_total_len </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u_int16_t&#160;</td>
+          <td class="paramname"><em>tlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00206">206</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a904f0e5dd4efebcc2e46ed9fd47edbea"></a><!-- doxytag: member="simptcp_packet.c::simptcp_set_win_size" ref="a904f0e5dd4efebcc2e46ed9fd47edbea" args="(char *buffer, u_int16_t size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simptcp_set_win_size </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u_int16_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>initialise le champ window_size du PDU SimpTCP a size </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointeur sur PDU simptcp </td></tr>
+    <tr><td class="paramname">size</td><td>taille de la fenêtre de contrôle de flux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8c_source.html#l00234">234</a> du fichier <a class="el" href="simptcp__packet_8c_source.html">simptcp_packet.c</a>.</p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

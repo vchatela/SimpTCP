@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP: Référence de la structure simptcp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la structure simptcp</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="simptcp" -->
+<p>structure regroupant toutes les donnees non specifiques a un socket simpTCP necessaires au fonctionnement d'une entite protocolaire simpTCP et notamment:  
+ <a href="structsimptcp.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a> [MAX_OPEN_SOCK]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#a4bf65a3f0b6b3f48f430ba01500119a0">simptcp_socket_list</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#a25782b273bc0e5c0401993c29df009d8">open_simptcp_sockets</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#ae11fbb9b73b27004d8e42ae1e99b470e">open_simptcp_connections</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#af055952ce553df4e5161f11638ff950a">udp_fd</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">local_udp</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#af87781a8db69541bce4d6123ccb65dd8">in_buffer</a> [MAX_SIMPTCP_BUFFER_SIZE]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">in_len</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsimptcp__socket__states__funcs.html">simptcp_socket_states_funcs</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#a00ff3a2bdc6813bc884f0e312fcbbe02">simptcp_socket_states</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">pthread_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp.html#ad9d525c8966d0ac6cfc5c39494cc95f2">simptcp_handler</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>structure regroupant toutes les donnees non specifiques a un socket simpTCP necessaires au fonctionnement d'une entite protocolaire simpTCP et notamment: </p>
+<ul>
+<li>Table des descripteurs de sockets simpTCP. Le "descripteur d'un socket simpTCP" joue le role d'indice de cette table. Un element de la table est un pointeur sur la structure de donnes <a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> qui regrouppe les donnees relatives a un socket simpTCP.</li>
+<li>nombre et liste des socket simTCP crees a la charge de l'entite simpTCP</li>
+<li>nombre de connexions simpTCP creees a la charge de l'entite simpTCP</li>
+<li>descripteur et l'adresse de niveau transport du socket UDP utilise par l'entite simpTCP pour acceder au service UDP</li>
+<li>occupation et pointeur sur le buffer qui memorise un PDU simpTCP recu avant l'etape de demultiplexage permettant d'identifier le socket simpTCP cible</li>
+<li>Table de pointeur vers les fonctions qu'execute une entite simpTCP, se trouvant dans un etat donne, en reaction a un evennement (timout, reception PDU,..) </li>
+</ul>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00033">33</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+</div><hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="af87781a8db69541bce4d6123ccb65dd8"></a><!-- doxytag: member="simptcp::in_buffer" ref="af87781a8db69541bce4d6123ccb65dd8" args="[MAX_SIMPTCP_BUFFER_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="structsimptcp.html#af87781a8db69541bce4d6123ccb65dd8">simptcp::in_buffer</a>[MAX_SIMPTCP_BUFFER_SIZE]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>SimpTCP socket Receive buffer used ; Provisionned for one single MAXSIZE PDU </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00042">42</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>, et <a class="el" href="simptcp__entity_8c_source.html#l00234">start_simptcp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afdd11ccef09cf859439860ee98ae07a2"></a><!-- doxytag: member="simptcp::in_len" ref="afdd11ccef09cf859439860ee98ae07a2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">simptcp::in_len</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>instantaneous in_buffer occupation </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00044">44</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abfe990a29b0e9927951b7f04a2545253"></a><!-- doxytag: member="simptcp::local_udp" ref="abfe990a29b0e9927951b7f04a2545253" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct sockaddr_in <a class="el" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">simptcp::local_udp</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>local UDP socket SAP address </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00040">40</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00234">start_simptcp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae11fbb9b73b27004d8e42ae1e99b470e"></a><!-- doxytag: member="simptcp::open_simptcp_connections" ref="ae11fbb9b73b27004d8e42ae1e99b470e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="structsimptcp.html#ae11fbb9b73b27004d8e42ae1e99b470e">simptcp::open_simptcp_connections</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>number of open simpTCP connections </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00037">37</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00234">start_simptcp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a25782b273bc0e5c0401993c29df009d8"></a><!-- doxytag: member="simptcp::open_simptcp_sockets" ref="a25782b273bc0e5c0401993c29df009d8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="structsimptcp.html#a25782b273bc0e5c0401993c29df009d8">simptcp::open_simptcp_sockets</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>open simpTCP sockets number </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00036">36</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00144">create_simptcp_socket()</a>, et <a class="el" href="simptcp__entity_8c_source.html#l00234">start_simptcp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad9d525c8966d0ac6cfc5c39494cc95f2"></a><!-- doxytag: member="simptcp::simptcp_handler" ref="ad9d525c8966d0ac6cfc5c39494cc95f2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pthread_t <a class="el" href="structsimptcp.html#ad9d525c8966d0ac6cfc5c39494cc95f2">simptcp::simptcp_handler</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>handler in charge of detecting simptcp packet arrivals and timeouts : <a class="el" href="simptcp__entity_8c.html#a1fd41e892f0775676cbdc62ed9d506cb" title="handler lance au demarrage de SimpTCP (au lancement de l&#39;application utilisant le service SimpTCP) et...">simptcp_entity_handler</a> </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00052">52</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00234">start_simptcp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a651e45864ee47dd73831182cd8ed1cb9"></a><!-- doxytag: member="simptcp::simptcp_socket_descriptors" ref="a651e45864ee47dd73831182cd8ed1cb9" args="[MAX_OPEN_SOCK]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a>* <a class="el" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp::simptcp_socket_descriptors</a>[MAX_OPEN_SOCK]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>SimpTCP socket descriptor table </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00034">34</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00144">create_simptcp_socket()</a>, <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, et <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4bf65a3f0b6b3f48f430ba01500119a0"></a><!-- doxytag: member="simptcp::simptcp_socket_list" ref="a4bf65a3f0b6b3f48f430ba01500119a0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a>* <a class="el" href="structsimptcp.html#a4bf65a3f0b6b3f48f430ba01500119a0">simptcp::simptcp_socket_list</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Open simpTCP socket list </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00035">35</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00234">start_simptcp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a00ff3a2bdc6813bc884f0e312fcbbe02"></a><!-- doxytag: member="simptcp::simptcp_socket_states" ref="a00ff3a2bdc6813bc884f0e312fcbbe02" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsimptcp__socket__states__funcs.html">simptcp_socket_states_funcs</a>* <a class="el" href="structsimptcp.html#a00ff3a2bdc6813bc884f0e312fcbbe02">simptcp::simptcp_socket_states</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>List of pointers to the functions that SimpTCP entity run in reaction to a timeout, packet arrival, tx requets </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00048">48</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, et <a class="el" href="simptcp__entity_8c_source.html#l00234">start_simptcp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af055952ce553df4e5161f11638ff950a"></a><!-- doxytag: member="simptcp::udp_fd" ref="af055952ce553df4e5161f11638ff950a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structsimptcp.html#af055952ce553df4e5161f11638ff950a">simptcp::udp_fd</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>udp socket descriptor </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__entity_8h_source.html#l00039">39</a> du fichier <a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>, et <a class="el" href="simptcp__entity_8c_source.html#l00234">start_simptcp()</a>.</p>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>inc/<a class="el" href="simptcp__entity_8h_source.html">simptcp_entity.h</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

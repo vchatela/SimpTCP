@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP: Référence du fichier inc/simptcp_api.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier inc/simptcp_api.h</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &lt;netdb.h&gt;</code><br/>
+</div>
+<p><a href="simptcp__api_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a0cc1f800552ba5bb91e47ea31a626a4f">IPPROTO_SIMPTCP</a>&#160;&#160;&#160;15</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">{SimpTCP protocol number &lt;in.h&gt;}  <a href="#a0cc1f800552ba5bb91e47ea31a626a4f"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#af4e0711877c45a41168ac677b0670ccd">socket</a> (int domain, int type, int protocol)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a2e470da1cfb8f1e0a4b30cbfbbdb76c4">bind</a> (int fd, const struct sockaddr *addr, socklen_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a7e6529d400966367b94e3d90bdad54c5">connect</a> (int fd, const struct sockaddr *addr, socklen_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a087dd5d138599ecc814d3ccbf358ce12">send</a> (int fd, const void *buf, size_t n, int flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a070d0b92132d6e3d10adc358af196cb8">recv</a> (int fd, void *buf, size_t n, int flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a4b2cf23fff95cbdb1f9fa5bd12f8320d">listen</a> (int fd, int n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#ae3df9f21b85b811970a15cf08d07b2af">accept</a> (int fd, struct sockaddr *addr, socklen_t *addr_len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a99f023ab4e092489d77250b02d9d049c">shutdown</a> (int fd, int how)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#aafbcde67669a1b96577e735ddebd8634">close</a> (int fd)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a0b427fb33607e12f9592c3e959d21759">read</a> (int fd, void *buf, size_t n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a61bdc608b7040a0d0bb9a5ef60d77e5f">write</a> (int fd, const void *buf, size_t n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#af69fe0eef11ad4b36a1a6175e0479754">getsockname</a> (int fd, struct sockaddr *addr, socklen_t *len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#aae59c9eb723edb127804bf14c9dfc6f9">getpeername</a> (int fd, struct sockaddr *addr, socklen_t *len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a96d265aa854fbb2d025684cbd0857a90">getsockopt</a> (int fd, int level, int optname, void *optval, socklen_t *optlen)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__api_8h.html#a81983de50d79d797b2ac0f0d0f28953f">setsockopt</a> (int fd, int level, int optname, const void *optval, socklen_t optlen)</td></tr>
+</table>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a0cc1f800552ba5bb91e47ea31a626a4f"></a><!-- doxytag: member="simptcp_api.h::IPPROTO_SIMPTCP" ref="a0cc1f800552ba5bb91e47ea31a626a4f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IPPROTO_SIMPTCP&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>{SimpTCP protocol number &lt;in.h&gt;} </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8h_source.html#l00015">15</a> du fichier <a class="el" href="simptcp__api_8h_source.html">simptcp_api.h</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__api_8c_source.html#l00051">is_simptcp_socket()</a>, et <a class="el" href="client_8c_source.html#l00021">main()</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ae3df9f21b85b811970a15cf08d07b2af"></a><!-- doxytag: member="simptcp_api.h::accept" ref="ae3df9f21b85b811970a15cf08d07b2af" args="(int fd, struct sockaddr *addr, socklen_t *addr_len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int accept </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct sockaddr *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t *&#160;</td>
+          <td class="paramname"><em>addr_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00180">180</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__lib_8h_source.html#l00230">simptcp_socket_state_funcs::accept</a>, <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00179">libc_accept()</a>, <a class="el" href="simptcp__entity_8h_source.html#l00064">simptcp_entity</a>, <a class="el" href="simptcp__entity_8h_source.html#l00035">simptcp::simptcp_socket_descriptors</a>, et <a class="el" href="simptcp__lib_8h_source.html#l00091">simptcp_socket::socket_state</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00179">libc_accept()</a>, et <a class="el" href="server_8c_source.html#l00024">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2e470da1cfb8f1e0a4b30cbfbbdb76c4"></a><!-- doxytag: member="simptcp_api.h::bind" ref="a2e470da1cfb8f1e0a4b30cbfbbdb76c4" args="(int fd, const struct sockaddr *addr, socklen_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int bind </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct sockaddr *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00086">86</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00069">libc_bind()</a>, <a class="el" href="simptcp__lib_8h_source.html#l00084">simptcp_socket::local_simptcp</a>, <a class="el" href="simptcp__entity_8h_source.html#l00064">simptcp_entity</a>, et <a class="el" href="simptcp__entity_8h_source.html#l00035">simptcp::simptcp_socket_descriptors</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00069">libc_bind()</a>, et <a class="el" href="server_8c_source.html#l00024">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aafbcde67669a1b96577e735ddebd8634"></a><!-- doxytag: member="simptcp_api.h::close" ref="aafbcde67669a1b96577e735ddebd8634" args="(int fd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int close </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00213">213</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00203">libc_close()</a>, et <a class="el" href="simptcp__api_8c_source.html#l00197">shutdown()</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00203">libc_close()</a>, et <a class="el" href="client_8c_source.html#l00021">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7e6529d400966367b94e3d90bdad54c5"></a><!-- doxytag: member="simptcp_api.h::connect" ref="a7e6529d400966367b94e3d90bdad54c5" args="(int fd, const struct sockaddr *addr, socklen_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int connect </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct sockaddr *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00103">103</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__lib_8h_source.html#l00228">simptcp_socket_state_funcs::active_open</a>, <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00081">libc_connect()</a>, <a class="el" href="simptcp__entity_8h_source.html#l00064">simptcp_entity</a>, <a class="el" href="simptcp__entity_8h_source.html#l00035">simptcp::simptcp_socket_descriptors</a>, et <a class="el" href="simptcp__lib_8h_source.html#l00091">simptcp_socket::socket_state</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00081">libc_connect()</a>, et <a class="el" href="client_8c_source.html#l00021">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae59c9eb723edb127804bf14c9dfc6f9"></a><!-- doxytag: member="simptcp_api.h::getpeername" ref="aae59c9eb723edb127804bf14c9dfc6f9" args="(int fd, struct sockaddr *addr, socklen_t *len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getpeername </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct sockaddr *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t *&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00265">265</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="libc__socket_8c_source.html#l00251">libc_getpeername()</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00251">libc_getpeername()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af69fe0eef11ad4b36a1a6175e0479754"></a><!-- doxytag: member="simptcp_api.h::getsockname" ref="af69fe0eef11ad4b36a1a6175e0479754" args="(int fd, struct sockaddr *addr, socklen_t *len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getsockname </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct sockaddr *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t *&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00256">256</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="libc__socket_8c_source.html#l00239">libc_getsockname()</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00239">libc_getsockname()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a96d265aa854fbb2d025684cbd0857a90"></a><!-- doxytag: member="simptcp_api.h::getsockopt" ref="a96d265aa854fbb2d025684cbd0857a90" args="(int fd, int level, int optname, void *optval, socklen_t *optlen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getsockopt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>optname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>optval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t *&#160;</td>
+          <td class="paramname"><em>optlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00275">275</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="libc__socket_8c_source.html#l00264">libc_getsockopt()</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00264">libc_getsockopt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4b2cf23fff95cbdb1f9fa5bd12f8320d"></a><!-- doxytag: member="simptcp_api.h::listen" ref="a4b2cf23fff95cbdb1f9fa5bd12f8320d" args="(int fd, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int listen </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00158">158</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00167">libc_listen()</a>, <a class="el" href="simptcp__lib_8h_source.html#l00229">simptcp_socket_state_funcs::passive_open</a>, <a class="el" href="simptcp__entity_8h_source.html#l00064">simptcp_entity</a>, <a class="el" href="simptcp__entity_8h_source.html#l00035">simptcp::simptcp_socket_descriptors</a>, et <a class="el" href="simptcp__lib_8h_source.html#l00091">simptcp_socket::socket_state</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00167">libc_listen()</a>, et <a class="el" href="server_8c_source.html#l00024">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b427fb33607e12f9592c3e959d21759"></a><!-- doxytag: member="simptcp_api.h::read" ref="a0b427fb33607e12f9592c3e959d21759" args="(int fd, void *buf, size_t n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t read </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00228">228</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00215">libc_read()</a>, et <a class="el" href="simptcp__api_8c_source.html#l00137">recv()</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00215">libc_read()</a>, et <a class="el" href="server_8c_source.html#l00024">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a070d0b92132d6e3d10adc358af196cb8"></a><!-- doxytag: member="simptcp_api.h::recv" ref="a070d0b92132d6e3d10adc358af196cb8" args="(int fd, void *buf, size_t n, int flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t recv </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00137">137</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00105">libc_recv()</a>, <a class="el" href="simptcp__lib_8h_source.html#l00232">simptcp_socket_state_funcs::recv</a>, <a class="el" href="simptcp__entity_8h_source.html#l00064">simptcp_entity</a>, <a class="el" href="simptcp__entity_8h_source.html#l00035">simptcp::simptcp_socket_descriptors</a>, et <a class="el" href="simptcp__lib_8h_source.html#l00091">simptcp_socket::socket_state</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00105">libc_recv()</a>, et <a class="el" href="simptcp__api_8c_source.html#l00228">read()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a087dd5d138599ecc814d3ccbf358ce12"></a><!-- doxytag: member="simptcp_api.h::send" ref="a087dd5d138599ecc814d3ccbf358ce12" args="(int fd, const void *buf, size_t n, int flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t send </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00119">119</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00093">libc_send()</a>, <a class="el" href="simptcp__lib_8h_source.html#l00231">simptcp_socket_state_funcs::send</a>, <a class="el" href="simptcp__entity_8h_source.html#l00064">simptcp_entity</a>, <a class="el" href="simptcp__entity_8h_source.html#l00035">simptcp::simptcp_socket_descriptors</a>, et <a class="el" href="simptcp__lib_8h_source.html#l00091">simptcp_socket::socket_state</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00093">libc_send()</a>, et <a class="el" href="simptcp__api_8c_source.html#l00242">write()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a81983de50d79d797b2ac0f0d0f28953f"></a><!-- doxytag: member="simptcp_api.h::setsockopt" ref="a81983de50d79d797b2ac0f0d0f28953f" args="(int fd, int level, int optname, const void *optval, socklen_t optlen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int setsockopt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>optname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>optval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t&#160;</td>
+          <td class="paramname"><em>optlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00286">286</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="libc__socket_8c_source.html#l00277">libc_setsockopt()</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00277">libc_setsockopt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a99f023ab4e092489d77250b02d9d049c"></a><!-- doxytag: member="simptcp_api.h::shutdown" ref="a99f023ab4e092489d77250b02d9d049c" args="(int fd, int how)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int shutdown </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>how</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00197">197</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00191">libc_shutdown()</a>, <a class="el" href="simptcp__lib_8h_source.html#l00234">simptcp_socket_state_funcs::shutdown</a>, <a class="el" href="simptcp__entity_8h_source.html#l00064">simptcp_entity</a>, <a class="el" href="simptcp__entity_8h_source.html#l00035">simptcp::simptcp_socket_descriptors</a>, et <a class="el" href="simptcp__lib_8h_source.html#l00091">simptcp_socket::socket_state</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__api_8c_source.html#l00213">close()</a>, et <a class="el" href="libc__socket_8c_source.html#l00191">libc_shutdown()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af4e0711877c45a41168ac677b0670ccd"></a><!-- doxytag: member="simptcp_api.h::socket" ref="af4e0711877c45a41168ac677b0670ccd" args="(int domain, int type, int protocol)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int socket </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>domain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>protocol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00072">72</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__lib_8c_source.html#l00144">create_simptcp_socket()</a>, <a class="el" href="simptcp__api_8c_source.html#l00051">is_simptcp_socket()</a>, et <a class="el" href="libc__socket_8c_source.html#l00057">libc_socket()</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00057">libc_socket()</a>, et <a class="el" href="client_8c_source.html#l00021">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a61bdc608b7040a0d0bb9a5ef60d77e5f"></a><!-- doxytag: member="simptcp_api.h::write" ref="a61bdc608b7040a0d0bb9a5ef60d77e5f" args="(int fd, const void *buf, size_t n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t write </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="simptcp__api_8c_source.html#l00242">242</a> du fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__api_8c_source.html#l00029">is_simptcp_descriptor()</a>, <a class="el" href="libc__socket_8c_source.html#l00227">libc_write()</a>, et <a class="el" href="simptcp__api_8c_source.html#l00119">send()</a>.</p>
+
+<p>Référencé par <a class="el" href="libc__socket_8c_source.html#l00227">libc_write()</a>, et <a class="el" href="client_8c_source.html#l00021">main()</a>.</p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

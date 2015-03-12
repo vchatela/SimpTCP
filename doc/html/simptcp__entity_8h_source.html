@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP:  Fichier source de inc/simptcp_entity.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">inc/simptcp_entity.h</div>  </div>
+</div>
+<div class="contents">
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00006"></a>00006 <span class="preprocessor">#ifndef _SIMPTCP_ENTITY_H_</span>
+<a name="l00007"></a>00007 <span class="preprocessor"></span><span class="preprocessor">#define _SIMPTCP_ENTITY_H_</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;stdint.h&gt;</span>             <span class="comment">/* for INT32_MAX */</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;pthread.h&gt;</span>            <span class="comment">/* for pthread_mutex_t, pthread_cond_t */</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;sys/socket.h&gt;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;netinet/in.h&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;<a class="code" href="simptcp__lib_8h.html" title="{Defines the state variables needed by a simptcp protocol entity}">simptcp_lib.h</a>&gt;</span>
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="preprocessor">#define MAX_OPEN_SOCK 5 </span><span class="comment">/* the maximum number of open sockets */</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#define ETH_MTU 1500 </span><span class="comment">/* Ethernet Max transmit Unit */</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#define  MAX_SIMPTCP_BUFFER_SIZE (ETH_MTU-20-8) </span><span class="comment">/* to avoid IP fragmentation */</span>
+<a name="l00018"></a>00018 
+<a name="l00033"></a><a class="code" href="structsimptcp.html">00033</a> <span class="keyword">struct </span><a class="code" href="structsimptcp.html" title="structure regroupant toutes les donnees non specifiques a un socket simpTCP necessaires au fonctionne...">simptcp</a> { 
+<a name="l00034"></a><a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">00034</a>         <span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> *<a class="code" href="structsimptcp.html#a651e45864ee47dd73831182cd8ed1cb9">simptcp_socket_descriptors</a>[MAX_OPEN_SOCK];
+<a name="l00035"></a><a class="code" href="structsimptcp.html#a4bf65a3f0b6b3f48f430ba01500119a0">00035</a>         <span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> * <a class="code" href="structsimptcp.html#a4bf65a3f0b6b3f48f430ba01500119a0">simptcp_socket_list</a>; 
+<a name="l00036"></a><a class="code" href="structsimptcp.html#a25782b273bc0e5c0401993c29df009d8">00036</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structsimptcp.html#a25782b273bc0e5c0401993c29df009d8">open_simptcp_sockets</a>; 
+<a name="l00037"></a><a class="code" href="structsimptcp.html#ae11fbb9b73b27004d8e42ae1e99b470e">00037</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structsimptcp.html#ae11fbb9b73b27004d8e42ae1e99b470e">open_simptcp_connections</a>;  
+<a name="l00039"></a><a class="code" href="structsimptcp.html#af055952ce553df4e5161f11638ff950a">00039</a>         <span class="keywordtype">int</span> <a class="code" href="structsimptcp.html#af055952ce553df4e5161f11638ff950a">udp_fd</a>; 
+<a name="l00040"></a><a class="code" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">00040</a>         <span class="keyword">struct </span>sockaddr_in <a class="code" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">local_udp</a>;  
+<a name="l00042"></a><a class="code" href="structsimptcp.html#af87781a8db69541bce4d6123ccb65dd8">00042</a>         <span class="keywordtype">char</span> <a class="code" href="structsimptcp.html#af87781a8db69541bce4d6123ccb65dd8">in_buffer</a>[MAX_SIMPTCP_BUFFER_SIZE]; 
+<a name="l00044"></a><a class="code" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">00044</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structsimptcp.html#afdd11ccef09cf859439860ee98ae07a2">in_len</a>; 
+<a name="l00048"></a><a class="code" href="structsimptcp.html#a00ff3a2bdc6813bc884f0e312fcbbe02">00048</a>         <a class="code" href="structsimptcp__socket__states__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_states_funcs</a> * <a class="code" href="structsimptcp.html#a00ff3a2bdc6813bc884f0e312fcbbe02">simptcp_socket_states</a>; 
+<a name="l00052"></a><a class="code" href="structsimptcp.html#ad9d525c8966d0ac6cfc5c39494cc95f2">00052</a>         pthread_t <a class="code" href="structsimptcp.html#ad9d525c8966d0ac6cfc5c39494cc95f2">simptcp_handler</a>; 
+<a name="l00054"></a>00054 };
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00063"></a>00063 <span class="keyword">struct </span><a class="code" href="structsimptcp.html" title="structure regroupant toutes les donnees non specifiques a un socket simpTCP necessaires au fonctionne...">simptcp</a> simptcp_entity; 
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="comment">/* create a simptcp_core handler */</span>
+<a name="l00068"></a>00068 <span class="keywordtype">int</span> <a class="code" href="simptcp__entity_8c.html#aaa622a8b57e7d184388f265a1934aace" title="initialise simptcp control block et lance le handler #simptcp_entity_handle">start_simptcp</a> (<span class="keywordtype">int</span> <a class="code" href="structsimptcp.html#abfe990a29b0e9927951b7f04a2545253">local_udp</a>);
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="preprocessor">#endif </span><span class="comment">/* _SIMPTCP_ENTITY_H_ */</span>
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="comment">/* vim: set expandtab ts=4 sw=4 tw=80: */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

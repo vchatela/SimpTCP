@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP: Référence du fichier src/simptcp_api.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier src/simptcp_api.c</div>  </div>
+</div>
+<div class="contents">
+
+<p>{define simptcp service primitives simptcp provides the same system calls as those of TCP}  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;unistd.h&gt;</code><br/>
+<code>#include &lt;errno.h&gt;</code><br/>
+<code>#include &lt;simptcp_api.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>&gt;</code><br/>
+<code>#include &lt;simptcp_entity.h&gt;</code><br/>
+<code>#include &lt;libc_socket.h&gt;</code><br/>
+<code>#include &lt;term_colors.h&gt;</code><br/>
+<code>#include &lt;term_io.h&gt;</code><br/>
+</div>
+<p><a href="simptcp__api_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6d1dc91b0cc910c0b9f0e2b8cc12da7"></a><!-- doxytag: member="simptcp_api.c::__PREFIX__" ref="ab6d1dc91b0cc910c0b9f0e2b8cc12da7" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>__PREFIX__</b>&#160;&#160;&#160;&quot;[&quot; COLOR(&quot;SIMPTCP_API&quot;, BRIGHT_YELLOW) &quot; ] &quot;</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a928bcd4ed1ca26fa864fe5516efa2b20"></a><!-- doxytag: member="simptcp_api.c::__DEBUG__" ref="a928bcd4ed1ca26fa864fe5516efa2b20" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>__DEBUG__</b>&#160;&#160;&#160;1</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e43deef9b4f48197da419e4f4f98c20"></a><!-- doxytag: member="simptcp_api.c::is_simptcp_descriptor" ref="a9e43deef9b4f48197da419e4f4f98c20" args="(int fd)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>is_simptcp_descriptor</b> (int fd)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afda953d509c7f6e005bf20cd2217228d"></a><!-- doxytag: member="simptcp_api.c::is_simptcp_socket" ref="afda953d509c7f6e005bf20cd2217228d" args="(int domain, int type, int protocol)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>is_simptcp_socket</b> (int domain, int type, int protocol)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4e0711877c45a41168ac677b0670ccd"></a><!-- doxytag: member="simptcp_api.c::socket" ref="af4e0711877c45a41168ac677b0670ccd" args="(int domain, int type, int protocol)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b> (int domain, int type, int protocol)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e470da1cfb8f1e0a4b30cbfbbdb76c4"></a><!-- doxytag: member="simptcp_api.c::bind" ref="a2e470da1cfb8f1e0a4b30cbfbbdb76c4" args="(int fd, const struct sockaddr *addr, socklen_t len)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> (int fd, const struct sockaddr *addr, socklen_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e6529d400966367b94e3d90bdad54c5"></a><!-- doxytag: member="simptcp_api.c::connect" ref="a7e6529d400966367b94e3d90bdad54c5" args="(int fd, const struct sockaddr *addr, socklen_t len)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (int fd, const struct sockaddr *addr, socklen_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a087dd5d138599ecc814d3ccbf358ce12"></a><!-- doxytag: member="simptcp_api.c::send" ref="a087dd5d138599ecc814d3ccbf358ce12" args="(int fd, const void *buf, size_t n, int flags)" -->
+ssize_t&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (int fd, const void *buf, size_t n, int flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a070d0b92132d6e3d10adc358af196cb8"></a><!-- doxytag: member="simptcp_api.c::recv" ref="a070d0b92132d6e3d10adc358af196cb8" args="(int fd, void *buf, size_t n, int flags)" -->
+ssize_t&#160;</td><td class="memItemRight" valign="bottom"><b>recv</b> (int fd, void *buf, size_t n, int flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b2cf23fff95cbdb1f9fa5bd12f8320d"></a><!-- doxytag: member="simptcp_api.c::listen" ref="a4b2cf23fff95cbdb1f9fa5bd12f8320d" args="(int fd, int n)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>listen</b> (int fd, int n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3df9f21b85b811970a15cf08d07b2af"></a><!-- doxytag: member="simptcp_api.c::accept" ref="ae3df9f21b85b811970a15cf08d07b2af" args="(int fd, struct sockaddr *addr, socklen_t *addr_len)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (int fd, struct sockaddr *addr, socklen_t *addr_len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99f023ab4e092489d77250b02d9d049c"></a><!-- doxytag: member="simptcp_api.c::shutdown" ref="a99f023ab4e092489d77250b02d9d049c" args="(int fd, int how)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> (int fd, int how)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafbcde67669a1b96577e735ddebd8634"></a><!-- doxytag: member="simptcp_api.c::close" ref="aafbcde67669a1b96577e735ddebd8634" args="(int fd)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> (int fd)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b427fb33607e12f9592c3e959d21759"></a><!-- doxytag: member="simptcp_api.c::read" ref="a0b427fb33607e12f9592c3e959d21759" args="(int fd, void *buf, size_t n)" -->
+ssize_t&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (int fd, void *buf, size_t n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61bdc608b7040a0d0bb9a5ef60d77e5f"></a><!-- doxytag: member="simptcp_api.c::write" ref="a61bdc608b7040a0d0bb9a5ef60d77e5f" args="(int fd, const void *buf, size_t n)" -->
+ssize_t&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (int fd, const void *buf, size_t n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af69fe0eef11ad4b36a1a6175e0479754"></a><!-- doxytag: member="simptcp_api.c::getsockname" ref="af69fe0eef11ad4b36a1a6175e0479754" args="(int fd, struct sockaddr *addr, socklen_t *len)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getsockname</b> (int fd, struct sockaddr *addr, socklen_t *len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae59c9eb723edb127804bf14c9dfc6f9"></a><!-- doxytag: member="simptcp_api.c::getpeername" ref="aae59c9eb723edb127804bf14c9dfc6f9" args="(int fd, struct sockaddr *addr, socklen_t *len)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getpeername</b> (int fd, struct sockaddr *addr, socklen_t *len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96d265aa854fbb2d025684cbd0857a90"></a><!-- doxytag: member="simptcp_api.c::getsockopt" ref="a96d265aa854fbb2d025684cbd0857a90" args="(int fd, int level, int optname, void *optval, socklen_t *optlen)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getsockopt</b> (int fd, int level, int optname, void *optval, socklen_t *optlen)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81983de50d79d797b2ac0f0d0f28953f"></a><!-- doxytag: member="simptcp_api.c::setsockopt" ref="a81983de50d79d797b2ac0f0d0f28953f" args="(int fd, int level, int optname, const void *optval, socklen_t optlen)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>setsockopt</b> (int fd, int level, int optname, const void *optval, socklen_t optlen)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>{define simptcp service primitives simptcp provides the same system calls as those of TCP} </p>
+
+<p>Définition dans le fichier <a class="el" href="simptcp__api_8c_source.html">simptcp_api.c</a>.</p>
+</div></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP: Référence de la structure simptcp_generic_header</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la structure simptcp_generic_header</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="simptcp_generic_header" -->
+<p>simptcp pdu's generic header  
+ <a href="structsimptcp__generic__header.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__generic__header.html#a9d0591e3ce7464145b7283ffea6a0110">sport</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__generic__header.html#a365fdc2db0feb1f51e001307e9360f19">dport</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__generic__header.html#a1b71883ac61e387f2cffeed7f8795f51">seq_num</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__generic__header.html#aeac7b37c4e0a3f1840a12851f680b7b5">ack_num</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a97ca6cd918108269f3e29977f6a627"></a><!-- doxytag: member="simptcp_generic_header::header_len" ref="a2a97ca6cd918108269f3e29977f6a627" args="" -->
+unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>header_len</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__generic__header.html#a83b5d20f2ae2025a62e519e04c2b2aef">flags</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__generic__header.html#a8b9befd09ec71b049414f969ae17d23e">total_len</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab24afb45fcca6767f79daba38c29b476"></a><!-- doxytag: member="simptcp_generic_header::window_size" ref="ab24afb45fcca6767f79daba38c29b476" args="" -->
+u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>window_size</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u_int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__generic__header.html#ae154c2bb1d010744bc576baa246d1147">checksum</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>simptcp pdu's generic header </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8h_source.html#l00055">55</a> du fichier <a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>.</p>
+</div><hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="aeac7b37c4e0a3f1840a12851f680b7b5"></a><!-- doxytag: member="simptcp_generic_header::ack_num" ref="aeac7b37c4e0a3f1840a12851f680b7b5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t <a class="el" href="structsimptcp__generic__header.html#aeac7b37c4e0a3f1840a12851f680b7b5">simptcp_generic_header::ack_num</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>numbers the next awaited simptcp packet </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8h_source.html#l00061">61</a> du fichier <a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae154c2bb1d010744bc576baa246d1147"></a><!-- doxytag: member="simptcp_generic_header::checksum" ref="ae154c2bb1d010744bc576baa246d1147" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t <a class="el" href="structsimptcp__generic__header.html#ae154c2bb1d010744bc576baa246d1147">simptcp_generic_header::checksum</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Checksum computed over tyhe whole simptcp packet </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8h_source.html#l00066">66</a> du fichier <a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a365fdc2db0feb1f51e001307e9360f19"></a><!-- doxytag: member="simptcp_generic_header::dport" ref="a365fdc2db0feb1f51e001307e9360f19" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t <a class="el" href="structsimptcp__generic__header.html#a365fdc2db0feb1f51e001307e9360f19">simptcp_generic_header::dport</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>destination port number </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8h_source.html#l00058">58</a> du fichier <a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a83b5d20f2ae2025a62e519e04c2b2aef"></a><!-- doxytag: member="simptcp_generic_header::flags" ref="a83b5d20f2ae2025a62e519e04c2b2aef" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="structsimptcp__generic__header.html#a83b5d20f2ae2025a62e519e04c2b2aef">simptcp_generic_header::flags</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Les flags, voir #SYN #ACK .. </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8h_source.html#l00063">63</a> du fichier <a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1b71883ac61e387f2cffeed7f8795f51"></a><!-- doxytag: member="simptcp_generic_header::seq_num" ref="a1b71883ac61e387f2cffeed7f8795f51" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t <a class="el" href="structsimptcp__generic__header.html#a1b71883ac61e387f2cffeed7f8795f51">simptcp_generic_header::seq_num</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>numbers the next simptcp_packet to send simptcp uses packet numbering not byte numbering </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8h_source.html#l00059">59</a> du fichier <a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d0591e3ce7464145b7283ffea6a0110"></a><!-- doxytag: member="simptcp_generic_header::sport" ref="a9d0591e3ce7464145b7283ffea6a0110" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t <a class="el" href="structsimptcp__generic__header.html#a9d0591e3ce7464145b7283ffea6a0110">simptcp_generic_header::sport</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>source port number </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8h_source.html#l00057">57</a> du fichier <a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8b9befd09ec71b049414f969ae17d23e"></a><!-- doxytag: member="simptcp_generic_header::total_len" ref="a8b9befd09ec71b049414f969ae17d23e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u_int16_t <a class="el" href="structsimptcp__generic__header.html#a8b9befd09ec71b049414f969ae17d23e">simptcp_generic_header::total_len</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>simptcp packet's total length in bytes </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__packet_8h_source.html#l00064">64</a> du fichier <a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a>.</p>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>inc/<a class="el" href="simptcp__packet_8h_source.html">simptcp_packet.h</a></li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

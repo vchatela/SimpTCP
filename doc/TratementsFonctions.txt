@@ -1,0 +1,20 @@
+---> listen_simptcp_socket_state_accept
+- vérifier si l'on ne dépasse pas le  nbre max de demandes, de descripteurs... 
+- créer un nouvel socket simptcp
+- le placer en tête de liste de socket 
+- initialiser les adresses locales et distantes
+- spécifier que c'est un non listening socket
+- envoyer synack
+- passer à l'état synrecvd
+- mettre a jour liste de demandes de connexions
+- initialiser les paramèrtres de retour: addr et len
+
+
+--->void listen_simptcp_socket_state_process_simptcp_pdu 
+(struct simptcp_socket* sock, void* buf, int len)
+
+- si PDU reçu n'est pas un SYN -> ignorer (seul le cas nominal est implémenté !!!)
+- si PDU est de type SYN
+-- Mettre à jour la liste des demandes de connexion : sock->new_conn_req
+-- merttre à jour le nombre de demandes de conn en attente : pendin_conn_req
+

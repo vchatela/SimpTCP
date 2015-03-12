@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP:  Fichier source de inc/simptcp_lib.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">inc/simptcp_lib.h</div>  </div>
+</div>
+<div class="contents">
+<a href="simptcp__lib_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00006"></a>00006 <span class="preprocessor">#ifndef _SIMPTCP_LIB_H_</span>
+<a name="l00007"></a>00007 <span class="preprocessor"></span><span class="preprocessor">#define _SIMPTCP_LIB_H_</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;stdint.h&gt;</span>             <span class="comment">/* for INT32_MAX */</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;pthread.h&gt;</span>            <span class="comment">/* for pthread_mutex_t, pthread_cond_t */</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;sys/socket.h&gt;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;pthread.h&gt;</span>
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="preprocessor">#define ETH_MTU 1500 </span><span class="comment">/* Ethernet Max transmit Unit */</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#define SIMPTCP_SOCKET_MAX_BUFFER_SIZE (ETH_MTU-16-20-8) </span><span class="comment">/* SIMPTCP_MAX_SIZE to avoid IP </span>
+<a name="l00018"></a>00018 <span class="comment">                                                            fragmentation assuming no IP options */</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#define MAX_RETRANSMIT 255  </span><span class="comment">/* Maximum number of retransmissions */</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 
+<a name="l00027"></a>00027 <span class="keyword">enum</span>{
+<a name="l00028"></a>00028   unknown=0,
+<a name="l00029"></a>00029   client=1,
+<a name="l00030"></a>00030   nonlistening_server=2,
+<a name="l00031"></a>00031   listening_server=3
+<a name="l00032"></a>00032 } <a class="code" href="simptcp__lib_8h.html#a4b344e9d184b004d7e5d04bf5c4cc4fa" title="simptcp socket types; socket of type listening_server waits for connection requests">socket_types</a>;
+<a name="l00033"></a>00033 
+<a name="l00039"></a>00039 <span class="keyword">enum</span> {
+<a name="l00040"></a>00040   closed_state=1,
+<a name="l00041"></a>00041   liste_staten=2,
+<a name="l00042"></a>00042   syn_sen_statet=3,
+<a name="l00043"></a>00043   syn_rcvd_state=4,
+<a name="l00044"></a>00044   established_state=5,
+<a name="l00045"></a>00045   fin_wait_1_state=6,
+<a name="l00046"></a>00046   fin_wait_2_state=7,
+<a name="l00047"></a>00047   closing_state=8,
+<a name="l00048"></a>00048   close_wait_state=9,
+<a name="l00049"></a>00049   last_ack_state=10,
+<a name="l00050"></a>00050   time_wait_state=11
+<a name="l00051"></a>00051 } <a class="code" href="simptcp__lib_8h.html#a3f75adceab6347ca038e760e4ab4eed4" title="list of default SimpTCP socket states (taken from TCP finite state machine [RFC 793]). It Could be updated at will but in conjunction with data structure &quot;struct simptcp_socket_states_funcs&quot;">simptcp_states</a>;
+<a name="l00052"></a>00052 
+<a name="l00057"></a><a class="code" href="simptcp__lib_8h.html#a80a3a678cd666a3cadcd93663a389a4c">00057</a> <span class="keyword">enum</span> <a class="code" href="simptcp__lib_8h.html#a80a3a678cd666a3cadcd93663a389a4c" title="list of socket states during the data tranfer phase (see TD)">data_transfert_states</a>{
+<a name="l00058"></a>00058   <span class="comment">/* sender side */</span>
+<a name="l00059"></a>00059   wait_message=1, 
+<a name="l00060"></a>00060   wait_ack=2,
+<a name="l00061"></a>00061   <span class="comment">/* receiver side */</span>
+<a name="l00062"></a>00062   wait_packet=3
+<a name="l00063"></a>00063 };
+<a name="l00064"></a>00064 
+<a name="l00070"></a><a class="code" href="structsimptcp__socket.html">00070</a> <span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> { <span class="comment">/* SimpTCP Protocol Control Block */</span>
+<a name="l00071"></a>00071 
+<a name="l00072"></a><a class="code" href="structsimptcp__socket.html#ae02f94c3fd768243e043f1a24b4f80b2">00072</a>   <span class="keywordtype">short</span>  <a class="code" href="structsimptcp__socket.html#ae02f94c3fd768243e043f1a24b4f80b2">socket_type</a>; 
+<a name="l00074"></a><a class="code" href="structsimptcp__socket.html#ab9bebd65e8b4c9db5c4e1a3139c6267c">00074</a>   <span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> * * <a class="code" href="structsimptcp__socket.html#ab9bebd65e8b4c9db5c4e1a3139c6267c">new_conn_req</a>; 
+<a name="l00077"></a><a class="code" href="structsimptcp__socket.html#a706479a7e1ff043463267481669ba218">00077</a>   <span class="keywordtype">int</span> <a class="code" href="structsimptcp__socket.html#a706479a7e1ff043463267481669ba218">pending_conn_req</a>; 
+<a name="l00080"></a><a class="code" href="structsimptcp__socket.html#a2e2370c3ed1e2a44b455f467b22ea3fc">00080</a>   <span class="keywordtype">int</span> <a class="code" href="structsimptcp__socket.html#a2e2370c3ed1e2a44b455f467b22ea3fc">max_conn_req_backlog</a>; 
+<a name="l00082"></a>00082   <span class="comment">/* simptcp SAP Address */</span>
+<a name="l00083"></a><a class="code" href="structsimptcp__socket.html#a06e621718f310613f27789e3d2d7fd8a">00083</a>   <span class="keyword">struct </span>sockaddr_in <a class="code" href="structsimptcp__socket.html#a06e621718f310613f27789e3d2d7fd8a">local_simptcp</a>; 
+<a name="l00084"></a><a class="code" href="structsimptcp__socket.html#a8316ece43b0195b957fbd173355a1743">00084</a>   <span class="keyword">struct </span>sockaddr_in <a class="code" href="structsimptcp__socket.html#a8316ece43b0195b957fbd173355a1743">remote_simptcp</a>; 
+<a name="l00087"></a><a class="code" href="structsimptcp__socket.html#a0b8e5f399ba10cf414d0f34ae18e2e30">00087</a>   <span class="keyword">struct </span>sockaddr_in <a class="code" href="structsimptcp__socket.html#a0b8e5f399ba10cf414d0f34ae18e2e30">remote_udp</a>; 
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089   <span class="comment">/* current socket state - related to connection management  */</span>
+<a name="l00090"></a><a class="code" href="structsimptcp__socket.html#a8478b244ec3238b1067ba66a9687de1a">00090</a>   <span class="keyword">struct </span><a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> * <a class="code" href="structsimptcp__socket.html#a8478b244ec3238b1067ba66a9687de1a">socket_state</a>; 
+<a name="l00093"></a>00093   <span class="comment">/* Related to data transmissions */</span>
+<a name="l00094"></a><a class="code" href="structsimptcp__socket.html#a078e4393b2d006bdf9f3cbae6002ca7f">00094</a>   <span class="keywordtype">short</span> <a class="code" href="structsimptcp__socket.html#a078e4393b2d006bdf9f3cbae6002ca7f">socket_state_sender</a>; 
+<a name="l00096"></a><a class="code" href="structsimptcp__socket.html#a29e20f0b22e0999f8d297c6dda714cda">00096</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structsimptcp__socket.html#a29e20f0b22e0999f8d297c6dda714cda">next_seq_num</a>;  
+<a name="l00097"></a><a class="code" href="structsimptcp__socket.html#ad4a509575e4ea82031905e69d31929a7">00097</a>   <span class="keywordtype">char</span> <a class="code" href="structsimptcp__socket.html#ad4a509575e4ea82031905e69d31929a7">out_buffer</a>[SIMPTCP_SOCKET_MAX_BUFFER_SIZE]; 
+<a name="l00100"></a><a class="code" href="structsimptcp__socket.html#a1635b04342480ddd60a19742d6ada510">00100</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structsimptcp__socket.html#a1635b04342480ddd60a19742d6ada510">out_len</a>; 
+<a name="l00101"></a><a class="code" href="structsimptcp__socket.html#a738283bc5a59a3d8e30e257b985d97bf">00101</a>   <span class="keywordtype">char</span> <a class="code" href="structsimptcp__socket.html#a738283bc5a59a3d8e30e257b985d97bf">nbr_retransmit</a>; 
+<a name="l00104"></a>00104   <span class="comment">/* timer */</span>
+<a name="l00105"></a><a class="code" href="structsimptcp__socket.html#a4e714cf02316f441b9a39d70d50a512a">00105</a>   <span class="keywordtype">int</span> <a class="code" href="structsimptcp__socket.html#a4e714cf02316f441b9a39d70d50a512a">timer_duration</a>; 
+<a name="l00106"></a><a class="code" href="structsimptcp__socket.html#aeb6a92c8b7dd620842b6276cfde7f3c8">00106</a>   <span class="keyword">struct </span>timeval <a class="code" href="structsimptcp__socket.html#aeb6a92c8b7dd620842b6276cfde7f3c8">timeout</a>; 
+<a name="l00108"></a>00108   <span class="comment">/* when receiving  Data */</span>   
+<a name="l00109"></a><a class="code" href="structsimptcp__socket.html#a549dc6eff84a525ae6907c7632497173">00109</a>   <span class="keywordtype">short</span> <a class="code" href="structsimptcp__socket.html#a549dc6eff84a525ae6907c7632497173">socket_state_receiver</a>; 
+<a name="l00111"></a><a class="code" href="structsimptcp__socket.html#af401aec76c9d63330addd74d6db18446">00111</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structsimptcp__socket.html#af401aec76c9d63330addd74d6db18446">next_ack_num</a>;  
+<a name="l00112"></a><a class="code" href="structsimptcp__socket.html#ad808537c29abfccecf50290253bca910">00112</a>   <span class="keywordtype">char</span> <a class="code" href="structsimptcp__socket.html#ad808537c29abfccecf50290253bca910">in_buffer</a>[SIMPTCP_SOCKET_MAX_BUFFER_SIZE]; 
+<a name="l00115"></a><a class="code" href="structsimptcp__socket.html#ae33b7620c405183bd4bc05377d165d35">00115</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structsimptcp__socket.html#ae33b7620c405183bd4bc05377d165d35">in_len</a>;
+<a name="l00117"></a>00117   <span class="comment">/* MIB Statistics */</span>
+<a name="l00118"></a>00118   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> simptcp_send_count; <span class="comment">/* number of sent SimpTCP PDU */</span>
+<a name="l00119"></a>00119   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> simptcp_receive_count; <span class="comment">/* number of sent SimpTCP PDU */</span>
+<a name="l00120"></a>00120   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> simptcp_in_errors_count; <span class="comment">/* number of unexpected received SimpTCP PDU */</span>
+<a name="l00121"></a>00121   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> simptcp_retransmit_count; <span class="comment">/* number of SimpTCP PDU retransmissions */</span>
+<a name="l00122"></a>00122   
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124   <span class="comment">/* optional fields */</span>
+<a name="l00125"></a>00125   <span class="comment">/* related to the sending  window used with GoBack-N mechanism */</span>
+<a name="l00126"></a>00126   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sending_window_size;
+<a name="l00127"></a>00127   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sending_window_base; <span class="comment">/* sequence number of first unacked </span>
+<a name="l00128"></a>00128 <span class="comment">                                       simptcp packet */</span>
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130   <span class="comment">/* related to the receiving  window used with GoBack-N mechanism */</span>
+<a name="l00131"></a>00131   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> receiving_window_size;
+<a name="l00132"></a>00132   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> receiving_window_base; <span class="comment">/* sequence number of last in</span>
+<a name="l00133"></a>00133 <span class="comment">                                         sequence received packet */</span>
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135   <span class="comment">/* related to RTT estimation */</span>
+<a name="l00136"></a>00136   <span class="keywordtype">double</span> rtt_estimate;
+<a name="l00137"></a>00137   <span class="keywordtype">double</span> last_rtt; <span class="comment">/* last RTT */</span>
+<a name="l00138"></a>00138 
+<a name="l00142"></a><a class="code" href="structsimptcp__socket.html#adaf30c06b61eed438905abc8bfc2be54">00142</a>   pthread_mutex_t <a class="code" href="structsimptcp__socket.html#adaf30c06b61eed438905abc8bfc2be54">mutex_socket</a>;
+<a name="l00143"></a>00143 };
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 <span class="comment">/*</span>
+<a name="l00146"></a>00146 <span class="comment"> * The following function typedefs are for pointers to functions</span>
+<a name="l00147"></a>00147 <span class="comment"> * residing in each simpTCP_socket_state_func. Each </span>
+<a name="l00148"></a>00148 <span class="comment"> * simpTCP_socket_state_func struct is a static instance of a </span>
+<a name="l00149"></a>00149 <span class="comment"> * behaviour which a socket might be at a point</span>
+<a name="l00150"></a>00150 <span class="comment"> * in time. The simpTCP_socket_states struct wraps all these up and a</span>
+<a name="l00151"></a>00151 <span class="comment"> * single static instance of it is kept so that the correct state can</span>
+<a name="l00152"></a>00152 <span class="comment"> * be referenced to be pointed to be a socket whenever the socket&#39;s </span>
+<a name="l00153"></a>00153 <span class="comment"> *  state changes</span>
+<a name="l00154"></a>00154 <span class="comment"> */</span>
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 
+<a name="l00162"></a>00162 <span class="keyword">typedef</span> int (<a class="code" href="simptcp__lib_8h.html#a783b47a1487c279c42ec07e2a18c45f6">simptcp_socket_state_active_open</a>)
+<a name="l00163"></a><a class="code" href="simptcp__lib_8h.html#a783b47a1487c279c42ec07e2a18c45f6">00163</a> (<span class="keyword">struct  </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> * sock, <span class="keyword">struct </span>sockaddr * addr, socklen_t len);
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165 
+<a name="l00170"></a>00170 <span class="keyword">typedef</span> int (<a class="code" href="simptcp__lib_8h.html#a1910a33e3d052793b9f7a13e130a48bf">simptcp_socket_state_passive_open</a>)
+<a name="l00171"></a><a class="code" href="simptcp__lib_8h.html#a1910a33e3d052793b9f7a13e130a48bf">00171</a>      (<span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>* sock, <span class="keywordtype">int</span> n);
+<a name="l00172"></a>00172 
+<a name="l00177"></a>00177 <span class="keyword">typedef</span> int (<a class="code" href="simptcp__lib_8h.html#a2d51e327aecb07513f23de958ce6482a">simptcp_socket_state_accept</a>)
+<a name="l00178"></a><a class="code" href="simptcp__lib_8h.html#a2d51e327aecb07513f23de958ce6482a">00178</a>      (<span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>* sock, <span class="keyword">struct </span>sockaddr* addr, socklen_t* len);
+<a name="l00179"></a>00179 
+<a name="l00184"></a>00184 <span class="keyword">typedef</span> ssize_t (<a class="code" href="simptcp__lib_8h.html#af62edd9a9cdd009c4ef0bd1dcefe4d0c">simptcp_socket_state_send</a>)
+<a name="l00185"></a><a class="code" href="simptcp__lib_8h.html#af62edd9a9cdd009c4ef0bd1dcefe4d0c">00185</a>      (<span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>* sock, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> n, <span class="keywordtype">int</span> flags);
+<a name="l00186"></a>00186 
+<a name="l00191"></a>00191 <span class="keyword">typedef</span> ssize_t (<a class="code" href="simptcp__lib_8h.html#a350b26a01c58aa977d8f9f2e4d8d48ae">simptcp_socket_state_recv</a>)
+<a name="l00192"></a><a class="code" href="simptcp__lib_8h.html#a350b26a01c58aa977d8f9f2e4d8d48ae">00192</a>      (<span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>* sock, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> n, <span class="keywordtype">int</span> flags);
+<a name="l00193"></a>00193 
+<a name="l00198"></a>00198 <span class="keyword">typedef</span> int (<a class="code" href="simptcp__lib_8h.html#ada9536d7285e1f8d3f1b64092c4f035b">simptcp_socket_state_close</a>)
+<a name="l00199"></a><a class="code" href="simptcp__lib_8h.html#ada9536d7285e1f8d3f1b64092c4f035b">00199</a>      (<span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>* sock);
+<a name="l00200"></a>00200 
+<a name="l00205"></a>00205 <span class="keyword">typedef</span> int (<a class="code" href="simptcp__lib_8h.html#aff8d2d6ad2a95cc6519330cd2051dbb8">simptcp_socket_state_shutdown</a>)
+<a name="l00206"></a><a class="code" href="simptcp__lib_8h.html#aff8d2d6ad2a95cc6519330cd2051dbb8">00206</a>      (<span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>* sock, <span class="keywordtype">int</span> how);
+<a name="l00211"></a>00211 <span class="keyword">typedef</span> void (<a class="code" href="simptcp__lib_8h.html#ab1b050ec9a34aa71ab283408c0678888">simptcp_socket_state_process_pdu</a>)
+<a name="l00212"></a><a class="code" href="simptcp__lib_8h.html#ab1b050ec9a34aa71ab283408c0678888">00212</a>     (<span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>* sock, <span class="keywordtype">void</span>* buf, <span class="keywordtype">int</span> len);
+<a name="l00213"></a>00213 
+<a name="l00217"></a>00217 <span class="keyword">typedef</span> void (<a class="code" href="simptcp__lib_8h.html#a958dbfdb3b7e3fd22ff6335000cae7aa">simptcp_socket_state_handle_timeout</a>)
+<a name="l00218"></a><a class="code" href="simptcp__lib_8h.html#a958dbfdb3b7e3fd22ff6335000cae7aa">00218</a>     (<span class="keyword">struct </span><a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>* sock);
+<a name="l00219"></a>00219 
+<a name="l00226"></a><a class="code" href="structsimptcp__socket__state__funcs.html">00226</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> {
+<a name="l00227"></a>00227     <a class="code" href="simptcp__lib_8h.html#a783b47a1487c279c42ec07e2a18c45f6">simptcp_socket_state_active_open</a>    *active_open;
+<a name="l00228"></a>00228     <a class="code" href="simptcp__lib_8h.html#a1910a33e3d052793b9f7a13e130a48bf">simptcp_socket_state_passive_open</a>   *passive_open;
+<a name="l00229"></a>00229     <a class="code" href="simptcp__lib_8h.html#a2d51e327aecb07513f23de958ce6482a">simptcp_socket_state_accept</a>         *accept;
+<a name="l00230"></a>00230     <a class="code" href="simptcp__lib_8h.html#af62edd9a9cdd009c4ef0bd1dcefe4d0c">simptcp_socket_state_send</a>           *send;
+<a name="l00231"></a>00231     <a class="code" href="simptcp__lib_8h.html#a350b26a01c58aa977d8f9f2e4d8d48ae">simptcp_socket_state_recv</a>           *recv;
+<a name="l00232"></a>00232     <a class="code" href="simptcp__lib_8h.html#ada9536d7285e1f8d3f1b64092c4f035b">simptcp_socket_state_close</a>          *close;
+<a name="l00233"></a>00233     <a class="code" href="simptcp__lib_8h.html#aff8d2d6ad2a95cc6519330cd2051dbb8">simptcp_socket_state_shutdown</a>          *shutdown;
+<a name="l00234"></a>00234     <a class="code" href="simptcp__lib_8h.html#ab1b050ec9a34aa71ab283408c0678888">simptcp_socket_state_process_pdu</a> *process_simptcp_pdu;
+<a name="l00235"></a>00235     <a class="code" href="simptcp__lib_8h.html#a958dbfdb3b7e3fd22ff6335000cae7aa">simptcp_socket_state_handle_timeout</a> *handle_timeout;
+<a name="l00236"></a>00236 } <a class="code" href="simptcp__lib_8h.html#a9ac5d36d76f8c98c099c461aaafea11d" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a>;
+<a name="l00237"></a>00237 
+<a name="l00243"></a><a class="code" href="structsimptcp__socket__states__funcs.html">00243</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structsimptcp__socket__states__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_states_funcs</a> {
+<a name="l00244"></a>00244     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> closed;
+<a name="l00245"></a>00245     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> listen;
+<a name="l00246"></a>00246     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> synsent;
+<a name="l00247"></a>00247     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> synrcvd;
+<a name="l00248"></a>00248     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> established;
+<a name="l00249"></a>00249     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> closewait;
+<a name="l00250"></a>00250     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> finwait1;
+<a name="l00251"></a>00251     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> finwait2;
+<a name="l00252"></a>00252     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> closing;
+<a name="l00253"></a>00253     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> lastack;
+<a name="l00254"></a>00254     <a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> timewait;
+<a name="l00255"></a>00255 } <a class="code" href="simptcp__lib_8h.html#a67a840261aaa55db74c400bc9b031f96" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_states_funcs</a>;
+<a name="l00256"></a>00256 
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258 
+<a name="l00259"></a>00259 <span class="comment">/* Fill a struct simptcp_socket with default values */</span>
+<a name="l00260"></a>00260 <span class="keywordtype">int</span> <a class="code" href="simptcp__lib_8c.html#adb6c0b75c241752fc5f4c54bf45c7869" title="cree un nouveau socket SimpTCP et l&#39;initialise. parcourt la table de descripteur a la recheche d&#39;une ...">create_simptcp_socket</a>();
+<a name="l00261"></a>00261 <span class="keywordtype">char</span> * <a class="code" href="simptcp__lib_8c.html#a453cf251dbed8f0752cdc9cedb73c2ee" title="renvoie une chaine correspondant a l&#39;etat dans lequel se trouve un socket simpTCP. Utilisee a des fins d&#39;affichage">simptcp_socket_state_get_str</a>(<a class="code" href="structsimptcp__socket__state__funcs.html" title="It gathers pointers to functions that will be used to handle different situations (packet arrival...">simptcp_socket_state_funcs</a> *state);
+<a name="l00262"></a>00262 <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="simptcp__lib_8c.html#a5edfb011139988a99c5b355e71a460c8" title="permet l&#39;acces en exclusion mutuelle a la structure simptcp_socket d&#39;un socket Les variables d&#39;etat (...">lock_simptcp_socket</a>(<span class="keyword">struct</span> <a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> *sock);
+<a name="l00263"></a>00263 <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="simptcp__lib_8c.html#ac9b0f2aa112753ccbc76779e5a5c7764" title="permet l&#39;acces en exclusion mutuelle a la structure simptcp_socket d&#39;un socket Les variables d&#39;etat (...">unlock_simptcp_socket</a>(<span class="keyword">struct</span> <a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> *sock);
+<a name="l00264"></a>00264 <span class="keywordtype">int</span> <a class="code" href="simptcp__lib_8c.html#a286a29b6de115a6e078090830a6c570d" title="Indique si la duree mesuree par le timer associe a un socket simpTCP est actifs&#39;est ecoulee ou pas...">is_timeout</a>(<span class="keyword">struct</span> <a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> * sock);
+<a name="l00265"></a>00265 <span class="keywordtype">int</span> <a class="code" href="simptcp__lib_8c.html#a1dbfe45cd13802223324cdc245ed122e" title="Indique si le timer associe a un socket simpTCP est actif ou pas.">has_active_timer</a>(<span class="keyword">struct</span> <a class="code" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> * sock);
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267 
+<a name="l00268"></a>00268 <span class="preprocessor">#endif // _SIMPTCP_LIB_H_</span>
+<a name="l00269"></a>00269 <span class="preprocessor"></span>
+<a name="l00270"></a>00270 <span class="comment">/* vim: set expandtab ts=4 sw=4 tw=80: */</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

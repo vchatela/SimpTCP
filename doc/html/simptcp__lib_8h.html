@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SimpTCP: Référence du fichier inc/simptcp_lib.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">SimpTCP&#160;<span id="projectnumber">0</span></div>
+   <div id="projectbrief">developpementdeSimpTCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définition de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier inc/simptcp_lib.h</div>  </div>
+</div>
+<div class="contents">
+
+<p>{Defines the state variables needed by a simptcp protocol entity}  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br/>
+<code>#include &lt;pthread.h&gt;</code><br/>
+<code>#include &lt;sys/socket.h&gt;</code><br/>
+</div>
+<p><a href="simptcp__lib_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket.html">simptcp_socket</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">structure regroupant toutes les variables d'etat specifiques a un socket simpTCP  <a href="structsimptcp__socket.html#details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket__state__funcs.html">simptcp_socket_state_funcs</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">It gathers pointers to functions that will be used to handle different situations (packet arrival, timeout, transmission request) for a particular simpTCP socket state. For example, active_open is called when the applicaton calls connect.  <a href="structsimptcp__socket__state__funcs.html#details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimptcp__socket__states__funcs.html">simptcp_socket_states_funcs</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">It gathers pointers to functions that will be used to handle different situations (packet arrival, timeout, transmission request) for all simpTCP socket states.  <a href="structsimptcp__socket__states__funcs.html#details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f29d2b24a262d91b7158713728d45f2"></a><!-- doxytag: member="simptcp_lib.h::ETH_MTU" ref="a6f29d2b24a262d91b7158713728d45f2" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ETH_MTU</b>&#160;&#160;&#160;1500</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83eefee0c7aa1065c0e172e4c62466ba"></a><!-- doxytag: member="simptcp_lib.h::SIMPTCP_SOCKET_MAX_BUFFER_SIZE" ref="a83eefee0c7aa1065c0e172e4c62466ba" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SIMPTCP_SOCKET_MAX_BUFFER_SIZE</b>&#160;&#160;&#160;(ETH_MTU-16-20-8)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7a719f80f7ab6423139a59dbc13b412"></a><!-- doxytag: member="simptcp_lib.h::MAX_RETRANSMIT" ref="ad7a719f80f7ab6423139a59dbc13b412" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_RETRANSMIT</b>&#160;&#160;&#160;255</td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Définition de type</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a783b47a1487c279c42ec07e2a18c45f6">simptcp_socket_state_active_open</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, struct sockaddr *addr, socklen_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a1910a33e3d052793b9f7a13e130a48bf">simptcp_socket_state_passive_open</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, int n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a2d51e327aecb07513f23de958ce6482a">simptcp_socket_state_accept</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, struct sockaddr *addr, socklen_t *len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef ssize_t(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#af62edd9a9cdd009c4ef0bd1dcefe4d0c">simptcp_socket_state_send</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, const void *buf, size_t n, int flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef ssize_t(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a350b26a01c58aa977d8f9f2e4d8d48ae">simptcp_socket_state_recv</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, void *buf, size_t n, int flags)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#ada9536d7285e1f8d3f1b64092c4f035b">simptcp_socket_state_close</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#aff8d2d6ad2a95cc6519330cd2051dbb8">simptcp_socket_state_shutdown</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, int how)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef void(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#ab1b050ec9a34aa71ab283408c0678888">simptcp_socket_state_process_pdu</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, void *buf, int len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef void(&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a958dbfdb3b7e3fd22ff6335000cae7aa">simptcp_socket_state_handle_timeout</a> )(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ac5d36d76f8c98c099c461aaafea11d"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_funcs" ref="a9ac5d36d76f8c98c099c461aaafea11d" args="" -->
+typedef struct <br class="typebreak"/>
+<a class="el" href="structsimptcp__socket__state__funcs.html">simptcp_socket_state_funcs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a9ac5d36d76f8c98c099c461aaafea11d">simptcp_socket_state_funcs</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">It gathers pointers to functions that will be used to handle different situations (packet arrival, timeout, transmission request) for a particular simpTCP socket state. For example, active_open is called when the applicaton calls connect. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67a840261aaa55db74c400bc9b031f96"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_states_funcs" ref="a67a840261aaa55db74c400bc9b031f96" args="" -->
+typedef struct <br class="typebreak"/>
+<a class="el" href="structsimptcp__socket__states__funcs.html">simptcp_socket_states_funcs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a67a840261aaa55db74c400bc9b031f96">simptcp_socket_states_funcs</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">It gathers pointers to functions that will be used to handle different situations (packet arrival, timeout, transmission request) for all simpTCP socket states. <br/></td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>unknown</b> = 0, 
+<b>client</b> = 1, 
+<b>nonlistening_server</b> = 2, 
+<b>listening_server</b> = 3
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br/>
+&#160;&#160;<b>closed_state</b> = 1, 
+<b>liste_staten</b> = 2, 
+<b>syn_sen_statet</b> = 3, 
+<b>syn_rcvd_state</b> = 4, 
+<br/>
+&#160;&#160;<b>established_state</b> = 5, 
+<b>fin_wait_1_state</b> = 6, 
+<b>fin_wait_2_state</b> = 7, 
+<b>closing_state</b> = 8, 
+<br/>
+&#160;&#160;<b>close_wait_state</b> = 9, 
+<b>last_ack_state</b> = 10, 
+<b>time_wait_state</b> = 11
+<br/>
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a80a3a678cd666a3cadcd93663a389a4c">data_transfert_states</a> { <b>wait_message</b> = 1, 
+<b>wait_ack</b> = 2, 
+<b>wait_packet</b> = 3
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">list of socket states during the data tranfer phase (see TD) <br/></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#adb6c0b75c241752fc5f4c54bf45c7869">create_simptcp_socket</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">cree un nouveau socket SimpTCP et l'initialise. parcourt la table de descripteur a la recheche d'une entree libre. S'il en trouve, cree une nouvelle instance de la structure simpTCP, la rattache a la table de descrpteurs et l'initialise.  <a href="#adb6c0b75c241752fc5f4c54bf45c7869"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#ad67ad299819f01c5871db7f4225c9dc8">simptcp_socket_state_get_str</a> (<a class="el" href="structsimptcp__socket__state__funcs.html">simptcp_socket_state_funcs</a> *state)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie une chaine correspondant a l'etat dans lequel se trouve un socket simpTCP. Utilisee a des fins d'affichage  <a href="#ad67ad299819f01c5871db7f4225c9dc8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a5edfb011139988a99c5b355e71a460c8">lock_simptcp_socket</a> (struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">permet l'acces en exclusion mutuelle a la structure <a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> d'un socket Les variables d'etat (<a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>) d'un socket simpTCP peuvent etre modifiees par l'application (client ou serveur via les appels systeme) ou l'entite protocolaire (<a class="el" href="simptcp__entity_8c.html#a1fd41e892f0775676cbdc62ed9d506cb" title="handler lance au demarrage de SimpTCP (au lancement de l&#39;application utilisant le service SimpTCP) et...">simptcp_entity_handler</a>). Cette fonction repose sur l'utilisation de semaphores binaires (un semaphore par socket simpTCP). Avant tout acces en ecriture a ces variables, l'appel a cette fonction permet 1- si le semaphore est disponible (unlocked) de placer le semaphore dans une etat indisponible 2- si le semaphore est indisponible, d'attendre jusqu'a ce qu'il devienne disponible avant de le "locker"  <a href="#a5edfb011139988a99c5b355e71a460c8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#ac9b0f2aa112753ccbc76779e5a5c7764">unlock_simptcp_socket</a> (struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">permet l'acces en exclusion mutuelle a la structure <a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> d'un socket Les variables d'etat (<a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>) d'un socket simpTCP peuvent etre modifiees par l'application (client ou serveur via les appels systeme) ou l'entite protocolaire (<a class="el" href="simptcp__entity_8c.html#a1fd41e892f0775676cbdc62ed9d506cb" title="handler lance au demarrage de SimpTCP (au lancement de l&#39;application utilisant le service SimpTCP) et...">simptcp_entity_handler</a>). Cette fonction repose sur l'utilisation de semaphores binaires (un semaphore par socket simpTCP). Après un acces "protege" en ecriture a ces variables, l'appel a cette fonction permet de liberer le semaphore  <a href="#ac9b0f2aa112753ccbc76779e5a5c7764"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a286a29b6de115a6e078090830a6c570d">is_timeout</a> (struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si la duree mesuree par le timer associe a un socket simpTCP est actifs'est ecoulee ou pas.  <a href="#a286a29b6de115a6e078090830a6c570d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a1dbfe45cd13802223324cdc245ed122e">has_active_timer</a> (struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le timer associe a un socket simpTCP est actif ou pas.  <a href="#a1dbfe45cd13802223324cdc245ed122e"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b344e9d184b004d7e5d04bf5c4cc4fa"></a><!-- doxytag: member="simptcp_lib.h::socket_types" ref="a4b344e9d184b004d7e5d04bf5c4cc4fa" args="" -->
+enum  { ... } &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a4b344e9d184b004d7e5d04bf5c4cc4fa">socket_types</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">simptcp socket types; socket of type listening_server waits for connection requests <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f75adceab6347ca038e760e4ab4eed4"></a><!-- doxytag: member="simptcp_lib.h::simptcp_states" ref="a3f75adceab6347ca038e760e4ab4eed4" args="" -->
+enum  { ... } &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simptcp__lib_8h.html#a3f75adceab6347ca038e760e4ab4eed4">simptcp_states</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">list of default SimpTCP socket states (taken from TCP finite state machine [RFC 793]). It Could be updated at will but in conjunction with data structure "struct simptcp_socket_states_funcs" <br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>{Defines the state variables needed by a simptcp protocol entity} </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>{DGEI-INSAT 2010-2011} </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+</div><hr/><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="a2d51e327aecb07513f23de958ce6482a"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_accept" ref="a2d51e327aecb07513f23de958ce6482a" args=")(struct simptcp_socket *sock, struct sockaddr *addr, socklen_t *len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int( <a class="el" href="simptcp__lib_8h.html#a2d51e327aecb07513f23de958ce6482a">simptcp_socket_state_accept</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, struct sockaddr *addr, socklen_t *len)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called when application calls accept </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00178">178</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a783b47a1487c279c42ec07e2a18c45f6"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_active_open" ref="a783b47a1487c279c42ec07e2a18c45f6" args=")(struct simptcp_socket *sock, struct sockaddr *addr, socklen_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int( <a class="el" href="simptcp__lib_8h.html#a783b47a1487c279c42ec07e2a18c45f6">simptcp_socket_state_active_open</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, struct sockaddr *addr, socklen_t len)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called when application calls connect </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00163">163</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ada9536d7285e1f8d3f1b64092c4f035b"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_close" ref="ada9536d7285e1f8d3f1b64092c4f035b" args=")(struct simptcp_socket *sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int( <a class="el" href="simptcp__lib_8h.html#ada9536d7285e1f8d3f1b64092c4f035b">simptcp_socket_state_close</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called when application calls close </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00199">199</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a958dbfdb3b7e3fd22ff6335000cae7aa"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_handle_timeout" ref="a958dbfdb3b7e3fd22ff6335000cae7aa" args=")(struct simptcp_socket *sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void( <a class="el" href="simptcp__lib_8h.html#a958dbfdb3b7e3fd22ff6335000cae7aa">simptcp_socket_state_handle_timeout</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called after a timeout </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00218">218</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1910a33e3d052793b9f7a13e130a48bf"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_passive_open" ref="a1910a33e3d052793b9f7a13e130a48bf" args=")(struct simptcp_socket *sock, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int( <a class="el" href="simptcp__lib_8h.html#a1910a33e3d052793b9f7a13e130a48bf">simptcp_socket_state_passive_open</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, int n)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called when application calls listen </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00171">171</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab1b050ec9a34aa71ab283408c0678888"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_process_pdu" ref="ab1b050ec9a34aa71ab283408c0678888" args=")(struct simptcp_socket *sock, void *buf, int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void( <a class="el" href="simptcp__lib_8h.html#ab1b050ec9a34aa71ab283408c0678888">simptcp_socket_state_process_pdu</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, void *buf, int len)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called when simptcp_entity demultiplexes a packet to this particular socket </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00212">212</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a350b26a01c58aa977d8f9f2e4d8d48ae"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_recv" ref="a350b26a01c58aa977d8f9f2e4d8d48ae" args=")(struct simptcp_socket *sock, void *buf, size_t n, int flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ssize_t( <a class="el" href="simptcp__lib_8h.html#a350b26a01c58aa977d8f9f2e4d8d48ae">simptcp_socket_state_recv</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, void *buf, size_t n, int flags)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called when application calls recv </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00192">192</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af62edd9a9cdd009c4ef0bd1dcefe4d0c"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_send" ref="af62edd9a9cdd009c4ef0bd1dcefe4d0c" args=")(struct simptcp_socket *sock, const void *buf, size_t n, int flags)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ssize_t( <a class="el" href="simptcp__lib_8h.html#af62edd9a9cdd009c4ef0bd1dcefe4d0c">simptcp_socket_state_send</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, const void *buf, size_t n, int flags)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called when application calls send </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00185">185</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aff8d2d6ad2a95cc6519330cd2051dbb8"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_shutdown" ref="aff8d2d6ad2a95cc6519330cd2051dbb8" args=")(struct simptcp_socket *sock, int how)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int( <a class="el" href="simptcp__lib_8h.html#aff8d2d6ad2a95cc6519330cd2051dbb8">simptcp_socket_state_shutdown</a>)(struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *sock, int how)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>function pointer whose function gets called when application calls shutdown </p>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8h_source.html#l00206">206</a> du fichier <a class="el" href="simptcp__lib_8h_source.html">simptcp_lib.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="adb6c0b75c241752fc5f4c54bf45c7869"></a><!-- doxytag: member="simptcp_lib.h::create_simptcp_socket" ref="adb6c0b75c241752fc5f4c54bf45c7869" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int create_simptcp_socket </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>cree un nouveau socket SimpTCP et l'initialise. parcourt la table de descripteur a la recheche d'une entree libre. S'il en trouve, cree une nouvelle instance de la structure simpTCP, la rattache a la table de descrpteurs et l'initialise. </p>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>descripteur du socket simpTCP cree ou une erreur en cas d'echec </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8c_source.html#l00144">144</a> du fichier <a class="el" href="simptcp__lib_8c_source.html">simptcp_lib.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>, <a class="el" href="simptcp__entity_8h_source.html#l00036">simptcp::open_simptcp_sockets</a>, et <a class="el" href="simptcp__entity_8h_source.html#l00034">simptcp::simptcp_socket_descriptors</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1dbfe45cd13802223324cdc245ed122e"></a><!-- doxytag: member="simptcp_lib.h::has_active_timer" ref="a1dbfe45cd13802223324cdc245ed122e" args="(struct simptcp_socket *sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int has_active_timer </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Indique si le timer associe a un socket simpTCP est actif ou pas. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>pointeur sur les variables d'etat (<a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>) d'un socket simpTCP </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>1 si timer actif, 0 sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8c_source.html#l00285">285</a> du fichier <a class="el" href="simptcp__lib_8c_source.html">simptcp_lib.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__lib_8h_source.html#l00106">simptcp_socket::timeout</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__lib_8c_source.html#l00295">is_timeout()</a>, et <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a286a29b6de115a6e078090830a6c570d"></a><!-- doxytag: member="simptcp_lib.h::is_timeout" ref="a286a29b6de115a6e078090830a6c570d" args="(struct simptcp_socket *sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_timeout </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Indique si la duree mesuree par le timer associe a un socket simpTCP est actifs'est ecoulee ou pas. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>pointeur sur les variables d'etat (<a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>) d'un socket simpTCP </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>1 si duree ecoulee, 0 sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8c_source.html#l00295">295</a> du fichier <a class="el" href="simptcp__lib_8c_source.html">simptcp_lib.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__lib_8c_source.html#l00285">has_active_timer()</a>, et <a class="el" href="simptcp__lib_8h_source.html#l00106">simptcp_socket::timeout</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00158">simptcp_entity_handler()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5edfb011139988a99c5b355e71a460c8"></a><!-- doxytag: member="simptcp_lib.h::lock_simptcp_socket" ref="a5edfb011139988a99c5b355e71a460c8" args="(struct simptcp_socket *sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lock_simptcp_socket </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>permet l'acces en exclusion mutuelle a la structure <a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> d'un socket Les variables d'etat (<a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>) d'un socket simpTCP peuvent etre modifiees par l'application (client ou serveur via les appels systeme) ou l'entite protocolaire (<a class="el" href="simptcp__entity_8c.html#a1fd41e892f0775676cbdc62ed9d506cb" title="handler lance au demarrage de SimpTCP (au lancement de l&#39;application utilisant le service SimpTCP) et...">simptcp_entity_handler</a>). Cette fonction repose sur l'utilisation de semaphores binaires (un semaphore par socket simpTCP). Avant tout acces en ecriture a ces variables, l'appel a cette fonction permet 1- si le semaphore est disponible (unlocked) de placer le semaphore dans une etat indisponible 2- si le semaphore est indisponible, d'attendre jusqu'a ce qu'il devienne disponible avant de le "locker" </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>pointeur sur les variables d'etat (<a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>) d'un socket simpTCP </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8c_source.html#l00215">215</a> du fichier <a class="el" href="simptcp__lib_8c_source.html">simptcp_lib.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__lib_8h_source.html#l00142">simptcp_socket::mutex_socket</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad67ad299819f01c5871db7f4225c9dc8"></a><!-- doxytag: member="simptcp_lib.h::simptcp_socket_state_get_str" ref="ad67ad299819f01c5871db7f4225c9dc8" args="(simptcp_socket_state_funcs *state)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* simptcp_socket_state_get_str </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsimptcp__socket__state__funcs.html">simptcp_socket_state_funcs</a> *&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>renvoie une chaine correspondant a l'etat dans lequel se trouve un socket simpTCP. Utilisee a des fins d'affichage </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>correspond typiquement au champ socket_state de la structure <a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> qui indirectement identifie l'etat dans lequel le socket se trouve et les fonctions qu'il peut appeler depuis cet etat </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>chaine de carateres correspondant a l'etat dans lequel se trouve le socket simpTCP </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8c_source.html#l00035">35</a> du fichier <a class="el" href="simptcp__lib_8c_source.html">simptcp_lib.c</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00177">print_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9b0f2aa112753ccbc76779e5a5c7764"></a><!-- doxytag: member="simptcp_lib.h::unlock_simptcp_socket" ref="ac9b0f2aa112753ccbc76779e5a5c7764" args="(struct simptcp_socket *sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int unlock_simptcp_socket </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structsimptcp__socket.html">simptcp_socket</a> *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>permet l'acces en exclusion mutuelle a la structure <a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a> d'un socket Les variables d'etat (<a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>) d'un socket simpTCP peuvent etre modifiees par l'application (client ou serveur via les appels systeme) ou l'entite protocolaire (<a class="el" href="simptcp__entity_8c.html#a1fd41e892f0775676cbdc62ed9d506cb" title="handler lance au demarrage de SimpTCP (au lancement de l&#39;application utilisant le service SimpTCP) et...">simptcp_entity_handler</a>). Cette fonction repose sur l'utilisation de semaphores binaires (un semaphore par socket simpTCP). Après un acces "protege" en ecriture a ces variables, l'appel a cette fonction permet de liberer le semaphore </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>pointeur sur les variables d'etat (<a class="el" href="structsimptcp__socket.html" title="structure regroupant toutes les variables d&#39;etat specifiques a un socket simpTCP">simptcp_socket</a>) d'un socket simpTCP </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="simptcp__lib_8c_source.html#l00235">235</a> du fichier <a class="el" href="simptcp__lib_8c_source.html">simptcp_lib.c</a>.</p>
+
+<p>Références <a class="el" href="simptcp__lib_8h_source.html#l00142">simptcp_socket::mutex_socket</a>.</p>
+
+<p>Référencé par <a class="el" href="simptcp__entity_8c_source.html#l00072">demultiplex_packet()</a>, et <a class="el" href="simptcp__lib_8c_source.html#l00083">init_simptcp_socket()</a>.</p>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Tue Mar 26 2013 pour SimpTCP par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>
