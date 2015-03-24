@@ -5,11 +5,11 @@
 
 #ifndef _TERM_IO_H_
 #define _TERM_IO_H_
-        
+
 #ifdef __PREFIX__
-    #define perror(errstr) \
-		perror(__PREFIX__ errstr) 
-    #define printf(fmt, ...) \
+#define perror(errstr) \
+		perror(__PREFIX__ errstr)
+#define printf(fmt, ...) \
 		printf(__PREFIX__ fmt, ## __VA_ARGS__)
 #endif /* __PREFIX__ */
 

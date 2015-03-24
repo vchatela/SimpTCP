@@ -3,45 +3,45 @@ svn:wc:ra_dav:version-url
 V 44
 /svn/stcp-jalvar-chatel/!svn/ver/2/trunk/inc
 END
-simptcp_lib.h
-K 25
-svn:wc:ra_dav:version-url
-V 58
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/inc/simptcp_lib.h
-END
-simptcp_packet.h
-K 25
-svn:wc:ra_dav:version-url
-V 61
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/inc/simptcp_packet.h
-END
 simptcp_api.h
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/inc/simptcp_api.h
+/svn/stcp-jalvar-chatel/!svn/ver/5/trunk/inc/simptcp_api.h
 END
 term_colors.h
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/inc/term_colors.h
+/svn/stcp-jalvar-chatel/!svn/ver/5/trunk/inc/term_colors.h
 END
 simptcp_entity.h
 K 25
 svn:wc:ra_dav:version-url
 V 61
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/inc/simptcp_entity.h
+/svn/stcp-jalvar-chatel/!svn/ver/5/trunk/inc/simptcp_entity.h
 END
 term_io.h
 K 25
 svn:wc:ra_dav:version-url
 V 54
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/inc/term_io.h
+/svn/stcp-jalvar-chatel/!svn/ver/5/trunk/inc/term_io.h
 END
 libc_socket.h
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/inc/libc_socket.h
+/svn/stcp-jalvar-chatel/!svn/ver/5/trunk/inc/libc_socket.h
+END
+simptcp_lib.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/stcp-jalvar-chatel/!svn/ver/5/trunk/inc/simptcp_lib.h
+END
+simptcp_packet.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/stcp-jalvar-chatel/!svn/ver/5/trunk/inc/simptcp_packet.h
 END
