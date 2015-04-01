@@ -1,49 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 44
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src
-END
-libc_socket.c
-K 25
-svn:wc:ra_dav:version-url
-V 58
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src/libc_socket.c
-END
-simptcp_func_var.c
-K 25
-svn:wc:ra_dav:version-url
-V 63
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src/simptcp_func_var.c
-END
-simptcp_lib.c
-K 25
-svn:wc:ra_dav:version-url
-V 58
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src/simptcp_lib.c
-END
-server.c
-K 25
-svn:wc:ra_dav:version-url
-V 53
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src/server.c
-END
-simptcp_packet.c
-K 25
-svn:wc:ra_dav:version-url
-V 61
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src/simptcp_packet.c
-END
-simptcp_api.c
-K 25
-svn:wc:ra_dav:version-url
-V 58
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src/simptcp_api.c
-END
-simptcp_entity.c
-K 25
-svn:wc:ra_dav:version-url
-V 61
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src/simptcp_entity.c
+/svn/stcp-jalvar-chatel/!svn/ver/7/trunk/src
 END
 Makefile
 K 25
@@ -55,5 +13,47 @@ client.c
 K 25
 svn:wc:ra_dav:version-url
 V 53
-/svn/stcp-jalvar-chatel/!svn/ver/2/trunk/src/client.c
+/svn/stcp-jalvar-chatel/!svn/ver/4/trunk/src/client.c
+END
+libc_socket.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/stcp-jalvar-chatel/!svn/ver/4/trunk/src/libc_socket.c
+END
+simptcp_func_var.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/stcp-jalvar-chatel/!svn/ver/4/trunk/src/simptcp_func_var.c
+END
+simptcp_lib.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/stcp-jalvar-chatel/!svn/ver/7/trunk/src/simptcp_lib.c
+END
+server.c
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/stcp-jalvar-chatel/!svn/ver/4/trunk/src/server.c
+END
+simptcp_packet.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/stcp-jalvar-chatel/!svn/ver/4/trunk/src/simptcp_packet.c
+END
+simptcp_api.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/stcp-jalvar-chatel/!svn/ver/4/trunk/src/simptcp_api.c
+END
+simptcp_entity.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/stcp-jalvar-chatel/!svn/ver/4/trunk/src/simptcp_entity.c
 END

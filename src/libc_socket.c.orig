@@ -32,9 +32,9 @@ static int (*bind_ptr) (int fd, const struct sockaddr *addr, socklen_t len);
 static int (*connect_ptr) (int fd, const struct sockaddr *addr, socklen_t len);
 static ssize_t (*send_ptr) (int fd, const void *buf, size_t n, int flags);
 static ssize_t (*recv_ptr) (int fd, void *buf, size_t n, int flags);
-static ssize_t (*sendto_ptr) (int fd, const void *buf, size_t n, int flags,
+static ssize_t (*sendto_ptr) (int fd, const void *buf, size_t n, int flags, 
                               const struct sockaddr *addr, socklen_t addr_len);
-static ssize_t (*recvfrom_ptr) (int fd, void *buf, size_t n, int flags,
+static ssize_t (*recvfrom_ptr) (int fd, void *buf, size_t n, int flags, 
                                 struct sockaddr *addr, socklen_t *addr_len);
 static ssize_t (*sendmsg_ptr) (int fd, const struct msghdr *message, int flags);
 static ssize_t (*recvmsg_ptr) (int fd, struct msghdr *message, int flags);
@@ -47,9 +47,9 @@ static ssize_t (*write_ptr) (int fd, const void *buf, size_t n);
 static int (*getsockname_ptr) (int fd, struct sockaddr *addr, socklen_t *len);
 static int (*getpeername_ptr) (int fd, struct sockaddr *addr, socklen_t *len);
 static int (*getsockopt_ptr) (int fd, int level, int optname, void *optval,
-                              socklen_t *optlen);
+                             socklen_t *optlen);
 static int (*setsockopt_ptr) (int fd, int level, int optname, const void *optval,
-                              socklen_t optlen);
+                             socklen_t optlen);
 
 /* Functions that wraps the libc. Basically initialize a function pointer the
  * first time a function is called, and then directly call the libc socket api
@@ -110,12 +110,12 @@ ssize_t libc_recv (int fd, void *buf, size_t n, int flags)
 
     INIT_FUNCTION_POINTER(recv);
     CHECK_FUNCTION_POINTER(recv);
-
+    
     return recv_ptr(fd, buf, n, flags);
 }
 
-ssize_t libc_sendto(int fd, const void *buf, size_t n, int flags,
-                    const struct sockaddr *addr, socklen_t addr_len)
+ssize_t libc_sendto(int fd, const void *buf, size_t n, int flags, 
+                    const struct sockaddr *addr, socklen_t addr_len) 
 {
 #if __DEBUG__
     printf("function %s called\n", __func__);
@@ -123,19 +123,19 @@ ssize_t libc_sendto(int fd, const void *buf, size_t n, int flags,
 
     INIT_FUNCTION_POINTER(sendto);
     CHECK_FUNCTION_POINTER(sendto);
-
+    
     return sendto_ptr(fd, buf, n, flags, addr, addr_len);
 }
-ssize_t libc_recvfrom(int fd, void *buf, size_t n, int flags,
+ssize_t libc_recvfrom(int fd, void *buf, size_t n, int flags, 
                       struct sockaddr *addr, socklen_t *addr_len)
 {
-    //#if __DEBUG__
-    //printf("function %s called\n", __func__);
-    //#endif
+  //#if __DEBUG__
+  //printf("function %s called\n", __func__);
+  //#endif
 
     INIT_FUNCTION_POINTER(recvfrom);
     CHECK_FUNCTION_POINTER(recvfrom);
-
+    
     return recvfrom_ptr(fd, buf, n, flags, addr, addr_len);
 }
 
@@ -196,7 +196,7 @@ int libc_shutdown (int fd, int how)
 
     INIT_FUNCTION_POINTER(shutdown);
     CHECK_FUNCTION_POINTER(shutdown);
-
+    
     return shutdown_ptr(fd, how);
 }
 
@@ -261,8 +261,8 @@ int libc_getpeername (int fd, struct sockaddr *addr, socklen_t *len)
 }
 
 
-int libc_getsockopt (int fd, int level, int optname, void *optval,
-                     socklen_t *optlen)
+int libc_getsockopt (int fd, int level, int optname, void *optval, 
+		     socklen_t *optlen)
 {
 #if __DEBUG__
     printf("function %s called\n", __func__);

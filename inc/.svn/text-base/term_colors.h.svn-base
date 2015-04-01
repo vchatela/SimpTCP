@@ -1,11 +1,11 @@
 /*
- * term-colors.h 
+ * term-colors.h
  */
 
 
 #ifndef _TERM_COLORS_H_
 #define _TERM_COLORS_H_
-        
+
 /* Definition for attributes */
 #define ATTR_DULL	        "0"
 #define ATTR_BRIGHT	        "1"
@@ -59,8 +59,8 @@
 #define BRIGHT_CYAN         ESC_FG(ATTR_BRIGHT, FG_CYAN)
 #define BRIGHT_WHITE        ESC_FG(ATTR_BRIGHT, FG_WHITE)
 
-/* 
- * Macro for coloring some text. Color must be or a string build with 
+/*
+ * Macro for coloring some text. Color must be or a string build with
  * ESC_FG() or ESC_FG_BG() or a shortcut.
  *
  * Example: 1. Specifying only attribute and foreground color
