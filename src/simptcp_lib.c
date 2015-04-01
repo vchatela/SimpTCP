@@ -310,11 +310,19 @@ int has_active_timer(struct simptcp_socket * sock)
 int is_timeout(struct simptcp_socket * sock)
 {
     struct timeval t0;
+<<<<<<< HEAD
 
     assert(sock!=NULL);
     /* make sure that the timer is launched */
     assert(has_active_timer(sock));
 
+=======
+
+    assert(sock!=NULL);
+    /* make sure that the timer is launched */
+    assert(has_active_timer(sock));
+
+>>>>>>> 010c66f60dd3ea7d651ccd8cc8948dd4979d9c8a
     gettimeofday(&t0, NULL);
     return ((sock->timeout.tv_sec < t0.tv_sec) ||
             ( (sock->timeout.tv_sec == t0.tv_sec) && (sock->timeout.tv_usec < t0.tv_usec)));
@@ -356,6 +364,7 @@ int closed_simptcp_socket_state_active_open (struct  simptcp_socket* sock, struc
 
     sock->remote_simptcp = *((struct sockaddr_in *)addr);
 		
+<<<<<<< HEAD
     // Numéro de séquence du premier pdu
     // Next seq num devra être incrémenté à la réception
     // du pdu ack. 
@@ -369,6 +378,21 @@ int closed_simptcp_socket_state_active_open (struct  simptcp_socket* sock, struc
                              sock->next_seq_num, // seq
                              0, // ack
                              SYN);
+=======
+		// Numéro de séquence du premier pdu
+		// Next seq num devra être incrémenté à la réception
+ 		// du pdu ack. 
+		sock->next_seq_num = get_initial_seq_num();
+		
+
+		char* pdu = simptcp_make_pdu(&sock->local_simptcp,
+                                 &sock->remote_simptcp,
+                                 NULL, // payload
+                                 0, // len
+                                 sock->next_seq_num, // seq
+                                 0, // ack
+                                 SYN);
+>>>>>>> 010c66f60dd3ea7d651ccd8cc8948dd4979d9c8a
 
     // Copie le pdu dans le out buffer.
     memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
@@ -385,8 +409,11 @@ int closed_simptcp_socket_state_active_open (struct  simptcp_socket* sock, struc
                      0,
                      (struct sockaddr*) &(sock->remote_udp),
                      sizeof(struct sockaddr_in));
+<<<<<<< HEAD
     
     
+=======
+>>>>>>> 010c66f60dd3ea7d651ccd8cc8948dd4979d9c8a
 
     if(res == -1)
     {
@@ -415,6 +442,7 @@ int closed_simptcp_socket_state_passive_open (struct simptcp_socket* sock, int n
 #endif
 		// On passe à l'état listen.
 		sock->socket_state = &(simptcp_entity.simptcp_socket_states->listen);
+<<<<<<< HEAD
         sock->socket_type = listening_server;
         sock->pending_conn_req = 0;
         sock->max_conn_req_backlog = n;
@@ -425,6 +453,8 @@ int closed_simptcp_socket_state_passive_open (struct simptcp_socket* sock, int n
         if(sock->new_conn_req != NULL)
             free(sock->new_conn_req);
 
+=======
+>>>>>>> 010c66f60dd3ea7d651ccd8cc8948dd4979d9c8a
 		sock->new_conn_req = (struct simptcp_socket **)malloc(n * sizeof(struct simptcp_socket*));
 		// TODO : penser à free cette superbe magnifique, vraiment très jolie, variable. 
 		// 			  merci, cordialement.
@@ -445,7 +475,10 @@ int closed_simptcp_socket_state_accept (struct simptcp_socket* sock, struct sock
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+<<<<<<< HEAD
 
+=======
+>>>>>>> 010c66f60dd3ea7d651ccd8cc8948dd4979d9c8a
     return 0;
 }
 
@@ -599,6 +632,7 @@ int listen_simptcp_socket_state_accept (struct simptcp_socket* sock, struct sock
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+<<<<<<< HEAD
 
      // On attend tant qu'aucune connexion entrante n'est détectée.
      while(sock->pending_conn_req == 0) 
@@ -616,6 +650,8 @@ int listen_simptcp_socket_state_accept (struct simptcp_socket* sock, struct sock
     
     // On passe le nouveau socket à synrcvd
     conn_req->
+=======
+>>>>>>> 010c66f60dd3ea7d651ccd8cc8948dd4979d9c8a
     return 0;
 }
 
@@ -710,6 +746,7 @@ void listen_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* soc
     // ANCHOR1
 #if __DEBUG__
     printf("function %s called\n", __func__);
+<<<<<<< HEAD
 #endif
     // On check le checksum du message.
     if(!simptcp_check_checksum(buf, n))
@@ -717,6 +754,8 @@ void listen_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* soc
 #if __DEBUG
         printf("corrupted packet");
         return -1;
+=======
+>>>>>>> 010c66f60dd3ea7d651ccd8cc8948dd4979d9c8a
 #endif
     }
    
