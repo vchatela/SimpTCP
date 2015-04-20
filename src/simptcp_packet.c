@@ -379,8 +379,8 @@ char* simptcp_make_pdu(struct sockaddr_in* src,
     simptcp_set_seq_num(pdu, seq_num);
     simptcp_set_ack_num(pdu, ack_num);
 
-    simptcp_set_sport(pdu, src->sin_port);
-    simptcp_set_dport(pdu, dst->sin_port);
+    simptcp_set_sport(pdu, ntohs(src->sin_port));
+    simptcp_set_dport(pdu, ntohs(dst->sin_port));
 
     // Taille maximale du buffer receveur : on prend la taille max d'un
     // pdu du réseau.

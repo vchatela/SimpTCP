@@ -89,6 +89,7 @@ int demultiplex_packet(char * buffer,struct sockaddr_in * udp_remote)
     simptcp_remote.sin_port = htons(simptcp_get_sport(buffer));
     dport = htons(simptcp_get_dport(buffer));
 
+    simptcp_print_packet(buffer);
     /* check if the packet is destined for a non-listening socket */
     /* this is an inefficient way to fetch for open sockets
        could be imporved using the open_sockets_list
@@ -98,6 +99,7 @@ int demultiplex_packet(char * buffer,struct sockaddr_in * udp_remote)
     {
         if ((sock=simptcp_entity.simptcp_socket_descriptors[fd]) != NULL)
         {
+            // print_simptcp_socket(sock);
             /* this is an open socket ..*/
             if (sock->local_simptcp.sin_port == dport
                     && sock->remote_simptcp.sin_addr.s_addr == simptcp_remote.sin_addr.s_addr
