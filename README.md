@@ -1,6 +1,6 @@
 # SimpTCP
 A new internet protocol, a simpification of TCP
-Based with sames concepts
+based with same concepts
 
 Stop and Wait
 Use UDP 
