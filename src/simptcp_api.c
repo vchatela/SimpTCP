@@ -182,7 +182,6 @@ int listen (int fd, int n)
 
     return 0;
 }
-
 int accept (int fd, struct sockaddr *addr, socklen_t *addr_len)
 {
     struct simptcp_socket* sock;

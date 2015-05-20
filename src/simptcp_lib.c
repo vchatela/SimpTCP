@@ -293,6 +293,23 @@ void stop_timer(struct simptcp_socket * sock)
     sock->timeout.tv_usec=0;
 }
 
+int resendBuffer(struct simptcp_socket *sock) {
+                                                                                                                                                                                                                                                                                                                                                                                    return 0;
+    stop_timer(sock);
+    int res = libc_sendto(simptcp_entity.udp_fd,
+                          sock->out_buffer,
+                          simptcp_get_total_len(sock->out_buffer),
+                          0,
+                          (struct sockaddr *) &(sock->remote_udp),
+                          sizeof(struct sockaddr_in));
+    if (res == -1) {
+        printf("ERROR: Sending FIN failed.\n");
+        return res;
+    }
+    start_timer(sock, getTimeoutDuration(sock));
+
+    return 0;
+}
 /*! \fn int has_active_timer(struct simptcp_socket * sock)
  * \brief Indique si le timer associe a un socket simpTCP est actif ou pas
  * \param sock  pointeur sur les variables d'etat (#simptcp_socket) d'un socket simpTCP
@@ -326,8 +343,23 @@ int is_timeout(struct simptcp_socket * sock)
  */
 int getTimeoutDuration(struct simptcp_socket * sock)
 {
-    return sock->rtt_estimate * 2 * 1000;
+    return sock->rtt_estimate * 4 * 1000;
 }
+
+int checkSequenceNumber(struct simptcp_socket *sock, void *buf) {
+    int seq = simptcp_get_seq_num(buf);
+    int expected = sock->next_ack_num;
+    if (seq == expected) {
+        printf("Good sequence number : expected %d, got %d\n", expected, seq);
+        return 1;
+    }
+    else {
+        printf("Bad sequence number : expected %d, got %d\n", expected, seq);
+        return 0;
+    }
+}
+
+
 
 /*** socket state dependent functions ***/
 
@@ -357,7 +389,7 @@ int closed_simptcp_socket_state_active_open (struct  simptcp_socket* sock, struc
 
     sock->remote_simptcp = *((struct sockaddr_in *)addr);
     sock->remote_udp = *((struct sockaddr_in *)addr);
-		
+    sock->socket_type = client;
     // Numéro de séquence du premier pdu
     // Next seq num devra être incrémenté à la réception
     // du pdu ack. 
@@ -378,7 +410,7 @@ int closed_simptcp_socket_state_active_open (struct  simptcp_socket* sock, struc
 		sock->next_seq_num = 0;
 
     // printf("DEBUG: udp fd = %d\n", simptcp_entity.udp_fd);
-    // simptcp_print_packet(pdu);
+    //simptcp_print_packet(pdu);
 		
     free(pdu);
 
@@ -398,8 +430,8 @@ int closed_simptcp_socket_state_active_open (struct  simptcp_socket* sock, struc
     else
     {
         printf("sendto: success\n");
+        start_timer(sock, getTimeoutDuration(sock));
         sock->socket_state = &(simptcp_entity.simptcp_socket_states->synsent);
-       // start_timer(sock, (int)(sock->rtt_estimate*1000)); // secondes -> millisec
     }
     return 0;
 }
@@ -547,6 +579,8 @@ void closed_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    resendBuffer(sock);
 }
 
 
@@ -644,8 +678,9 @@ int listen_simptcp_socket_state_accept (struct simptcp_socket* sock, struct sock
         printf("Echec de l'envoi !!!!\n");
 		return -1;
     }
+
 	// Lance le timer.
-	//start_timer(sock, getTimeoutDuration(sock)); // secondes -> millisec
+    start_timer(sock, getTimeoutDuration(sock));
 	
     
     // Recherche du file descriptor
@@ -788,6 +823,7 @@ void listen_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* soc
         newsock->socket_type = nonlistening_server; 
         newsock->remote_simptcp = sock->remote_simptcp;
         newsock->local_simptcp = sock->local_simptcp;
+        newsock->remote_udp = sock->remote_udp;
         // Ajout le nouveau socket à la file des connexions et on incrémente
         // le nombre de connexions en cours.
         sock->new_conn_req[sock->pending_conn_req] = newsock;
@@ -807,6 +843,7 @@ void listen_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* soc
 
         sock->next_seq_num = get_initial_seq_num();
         sock->next_ack_num = 0;
+        stop_timer(sock);
     }
 
     
@@ -825,6 +862,8 @@ void listen_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    resendBuffer(sock);
 }
 
 
@@ -1028,12 +1067,13 @@ void synsent_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* so
             return;
 
         // Lance le timer.
-        //start_timer(sock, getTimeoutDuration(sock)); // secondes -> millisec
+        start_timer(sock, getTimeoutDuration(sock));
 
         if((flags & ACK) == ACK)
         {
             // On a reçu un syn ack
             sock->socket_state = &(simptcp_entity.simptcp_socket_states->established);
+            stop_timer(sock);
             printf("Syn/Ack reçu => passage à established !\n");
         }
         else
@@ -1059,6 +1099,7 @@ void synsent_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
     printf("function %s called\n", __func__);
 #endif
 
+    resendBuffer(sock);
 
 }
 
@@ -1167,7 +1208,7 @@ ssize_t synrcvd_simptcp_socket_state_recv (struct simptcp_socket* sock, void *bu
     if(!simptcp_check_checksum(buf, n))
     {
 #if __DEBUG
-        printf("corrupted packet");
+        printf("corrupted packet\n");
         return -1;
 #endif
     }
@@ -1191,7 +1232,7 @@ ssize_t synrcvd_simptcp_socket_state_recv (struct simptcp_socket* sock, void *bu
         // On a reçu un syn ack
         sock->socket_state = &(simptcp_entity.simptcp_socket_states->established);
     }*/
-    printf("NNNNNNNNNNNNNNNNNNOOOOOOOOOOOOOO");
+    printf("NNNNNNNNNNNNNNNNNNOOOOOOOOOOOOOO\n");
     return n;
 }
 
@@ -1252,11 +1293,12 @@ void synrcvd_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* so
     if(!simptcp_check_checksum(buf, len))
     {
 #if __DEBUG
-        printf("corrupted packet");
+        printf("corrupted packet\n");
         return -1;
 #endif
     }
-    // ---------- A VOIR APRES -----------
+
+
     // ANCHOR SYNRCVD
     // On copie le packet dans le in_buffer.
     memcpy(sock->in_buffer, buf, len);
@@ -1275,7 +1317,7 @@ void synrcvd_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* so
 
         // Spécifie les bons numéros d'ack etc...
         sock->next_ack_num = ack_num + 1;
-        printf("LOLOLOLOLOL NEXT ACK = %d", sock->next_ack_num);
+        stop_timer(sock);
         // On a reçu un syn ack
         sock->socket_state = &(simptcp_entity.simptcp_socket_states->established);
     }
@@ -1297,6 +1339,8 @@ void synrcvd_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    resendBuffer(sock);
 }
 
 
@@ -1442,8 +1486,12 @@ ssize_t established_simptcp_socket_state_recv (struct simptcp_socket* sock, void
     }
 
     // Quand on a un paquet => on le donne à l'user.
-    int length = sock->in_len <= n ? sock->in_len : n;
-    memcpy(buf, sock->in_buffer, length);
+    int hlen = simptcp_get_head_len(sock->in_buffer);
+    int length = sock->in_len - hlen;
+    length = length <= n ? length : n;
+
+    memcpy(buf, (sock->in_buffer + hlen), length);
+
     sock->in_len = 0;
 
     return length;
@@ -1463,6 +1511,7 @@ int established_simptcp_socket_state_close (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
     return 0;
 
 }
@@ -1482,9 +1531,68 @@ int established_simptcp_socket_state_shutdown (struct simptcp_socket* sock, int 
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    // ANCHOR CLOSE
+
+    // On suppose que c'est le client qui ferme la connexion.
+    if (sock->socket_type == nonlistening_server) {
+        printf("***** WAITING FOR FIN FROM CLIENT. \n");
+        while (sock->socket_state != &(simptcp_entity.simptcp_socket_states->closewait)) {
+            usleep(500);
+        }
+        printf("***** CLOSE CALL DONE GO YO LAST ACK. \n");
+        sock->socket_state = &(simptcp_entity.simptcp_socket_states->closewait);
+        closewait_simptcp_socket_state_shutdown(sock, how);
+
+        // On attend le dernier ack
+        while (sock->socket_state != &(simptcp_entity.simptcp_socket_states->closed)) {
+            usleep(500);
+        }
+        return 0;
+    }
+    else if (sock->socket_type == client) {
+        // Incrémentation du seq number
+        sock->next_seq_num++;
+        // On a reçu un syn, => on renvoie un ack
+        char *pdu = simptcp_make_pdu(&sock->local_simptcp,
+                                     &sock->remote_simptcp,
+                                     NULL, // payload
+                                     0, // len
+                                     sock->next_seq_num, // seq
+                                     sock->next_ack_num, // ack
+                                     FIN);
+
+
+        // Copie le pdu dans le out buffer.
+        memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
+
+        // Envoie le pdu
+        int res = sendto(simptcp_entity.udp_fd,
+                         sock->out_buffer,
+                         simptcp_get_total_len(sock->out_buffer),
+                         0,
+                         (struct sockaddr *) &(sock->remote_udp),
+                         sizeof(struct sockaddr_in));
+
+        // Gestion de l'erreur.
+        if (res == -1)
+            return -1;
+
+        free(pdu);
+
+
+        sock->socket_state = &(simptcp_entity.simptcp_socket_states->finwait1);
+        printf("***** FIN SENT | WAITING FOR END OF PROTOCOL TO EXIT FUNCTION. \n");
+        while (sock->socket_state != &(simptcp_entity.simptcp_socket_states->closed)) {
+            usleep(500);
+        }
+        printf("***** SOCKET CLOSED PROPERLY !!\n");
+    }
     return 0;
 
 }
+
+
 
 /**
  * called when library demultiplexed a packet to this particular socket
@@ -1502,49 +1610,76 @@ void established_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
-    printf("***** PKT RECU: SEQ=%d, ACK=%d\n", simptcp_get_seq_num(buf), simptcp_get_ack_num(buf));
     // ANCHOR PROCESS
+
     int seq = simptcp_get_seq_num(buf);
     int expected = sock->next_ack_num;
-    if (seq == expected) {
-        sock->next_ack_num++;
-        printf("Good sequence number : expected %d, got %d\n", expected, seq);
-        // Cas où on reçoit un paquet
-        // 1. On stocke le paquet dans le in buffer.
-        int length = len < SIMPTCP_SOCKET_MAX_BUFFER_SIZE ? len : MAX_SIMPTCP_BUFFER_SIZE;
-        memcpy(sock->in_buffer, buf, length);
-        sock->in_len = len;
 
-        // 2. on renvoie un ack.
-        char *pdu = simptcp_make_pdu(&sock->local_simptcp,
-                                     &sock->remote_simptcp,
-                                     NULL, // payload
-                                     0, // len
-                                     sock->next_seq_num, // seq
-                                     sock->next_ack_num, // ack
-                                     ACK);
+    if (sock->socket_type == nonlistening_server) {
+        printf("***** PKT RECU: SEQ=%d, ACK=%d\n", simptcp_get_seq_num(buf), simptcp_get_ack_num(buf));
 
-        // Copie le pdu dans le out buffer.
-        memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
+        if (seq == expected) {
+            sock->next_ack_num++;
+            printf("Good sequence number : expected %d, got %d\n", expected, seq);
+            // Cas où on reçoit un paquet
+            // 1. On stocke le paquet dans le in buffer.
+            int length = len < SIMPTCP_SOCKET_MAX_BUFFER_SIZE ? len : MAX_SIMPTCP_BUFFER_SIZE;
+            memcpy(sock->in_buffer, buf, length);
+            sock->in_len = len;
 
-        free(pdu);
+            // 2. on renvoie un ack.
+            char *pdu = simptcp_make_pdu(&sock->local_simptcp,
+                                         &sock->remote_simptcp,
+                                         NULL, // payload
+                                         0, // len
+                                         sock->next_seq_num, // seq
+                                         sock->next_ack_num, // ack
+                                         ACK);
 
-        int res = libc_sendto(simptcp_entity.udp_fd,
-                              sock->out_buffer,
-                              simptcp_get_total_len(sock->out_buffer),
-                              0,
-                              (struct sockaddr *) &(sock->remote_udp),
-                              sizeof(struct sockaddr_in));
+            // Copie le pdu dans le out buffer.
+            memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
 
-        printf("***** ACK SENT: SEQ=%d, ACK=%d\n", sock->next_seq_num, sock->next_ack_num);
+            free(pdu);
 
-        // On incrémente le prochain seq number.
-        sock->next_seq_num++;
+            int res = libc_sendto(simptcp_entity.udp_fd,
+                                  sock->out_buffer,
+                                  simptcp_get_total_len(sock->out_buffer),
+                                  0,
+                                  (struct sockaddr *) &(sock->remote_udp),
+                                  sizeof(struct sockaddr_in));
+
+            printf("***** ACK SENT: SEQ=%d, ACK=%d (res = %d)\n", sock->next_seq_num, sock->next_ack_num, res);
+
+            // On incrémente le prochain seq number.
+            sock->next_seq_num++;
+
+            // Si le paquet est un FIN => on passe dans l'état closewait.
+            if ((simptcp_get_flags(buf) & FIN) == FIN) {
+                sock->socket_state = &(simptcp_entity.simptcp_socket_states->closewait);
+            }
+        }
+        else {
+            printf("Bad sequence number : expected %d, got %d\n", expected, seq);
+        }
+
+
+
+    }
+    else if (sock->socket_type == client) // client
+    {
+        printf("Sequence number : expected %d, got %d\n", expected, seq);
+        // Réception du ack.
+        if (seq == expected && ((simptcp_get_flags(buf) & ACK) == ACK)) {
+            sock->next_ack_num++;
+            stop_timer(sock);
+        }
+        else {
+            printf("BAD ACK\n");
+        }
     }
     else {
-        printf("Bad sequence number : expected %d, got %d\n", expected, seq);
+        printf("WTF ????????????????\n");
     }
-
 
 
 }
@@ -1563,6 +1698,9 @@ void established_simptcp_socket_state_handle_timeout (struct simptcp_socket* soc
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+
+    resendBuffer(sock);
 }
 
 
@@ -1686,8 +1824,8 @@ int closewait_simptcp_socket_state_close (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
-    return 0;
 
+    return 0;
 }
 
 /**
@@ -1705,6 +1843,37 @@ int closewait_simptcp_socket_state_shutdown (struct simptcp_socket* sock, int ho
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    // ANCHOR CLOSEWAIT
+    char *pdu = simptcp_make_pdu(&sock->local_simptcp,
+                                 &sock->remote_simptcp,
+                                 NULL, // payload
+                                 0, // len
+                                 sock->next_seq_num, // seq
+                                 sock->next_ack_num, // ack
+                                 FIN);
+
+    // Copie le pdu dans le out buffer.
+    memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
+    sock->next_seq_num++;
+
+
+    free(pdu);
+
+    int res = libc_sendto(simptcp_entity.udp_fd,
+                          sock->out_buffer,
+                          simptcp_get_total_len(sock->out_buffer),
+                          0,
+                          (struct sockaddr *) &(sock->remote_udp),
+                          sizeof(struct sockaddr_in));
+
+    // Gestion de l'erreur.
+    if (res == -1)
+        return res;
+
+    start_timer(sock, getTimeoutDuration(sock));
+    sock->socket_state = &(simptcp_entity.simptcp_socket_states->lastack);
+    printf("***** CLOSE CALL RECEIVED. GO TO LAST ACK.\n");
     return 0;
 
 }
@@ -1740,6 +1909,8 @@ void closewait_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    resendBuffer(sock);
 }
 
 
@@ -1900,6 +2071,27 @@ void finwait1_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* s
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    // ANCHOR FINWAIT1
+    unsigned char flags = simptcp_get_flags(buf);
+    int expected = sock->next_ack_num;
+    if (simptcp_get_seq_num(buf) == expected) {
+        if ((flags & ACK) == ACK) {
+
+            // Spécifie les bons numéros d'ack etc...
+            sock->next_ack_num = simptcp_get_seq_num(buf) + 1;
+            // On a reçu un ack of fin
+            sock->socket_state = &(simptcp_entity.simptcp_socket_states->finwait2);
+            stop_timer(sock);
+            printf("***** ACK OF FIN RECEIVED\n");
+        }
+        else {
+            printf("***** UNEXPECTED PACKET IN FINWAIT1\n");
+        }
+    }
+    else {
+        printf("BAD SEQ : expected %d, got %d\n", expected, simptcp_get_seq_num(buf));
+    }
 }
 
 /**
@@ -1915,6 +2107,8 @@ void finwait1_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    resendBuffer(sock);
 }
 
 
@@ -2076,6 +2270,48 @@ void finwait2_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* s
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    // ANCHOR FINWAIT2
+    unsigned char flags = simptcp_get_flags(buf);
+    int expected = sock->next_ack_num;
+    if (simptcp_get_seq_num(buf) == expected) {
+        if ((flags & FIN) == FIN) {
+
+            // On envoie le ACK
+            sock->next_seq_num++;
+            char *pdu = simptcp_make_pdu(&sock->local_simptcp,
+                                         &sock->remote_simptcp,
+                                         NULL, // payload
+                                         0, // len
+                                         sock->next_seq_num, // seq
+                                         sock->next_ack_num, // ack
+                                         ACK);
+            memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
+            free(pdu);
+            int res = libc_sendto(simptcp_entity.udp_fd,
+                                  sock->out_buffer,
+                                  simptcp_get_total_len(sock->out_buffer),
+                                  0,
+                                  (struct sockaddr *) &(sock->remote_udp),
+                                  sizeof(struct sockaddr_in));
+
+            if (res == -1) {
+                printf("ERROR: Sending FIN failed.\n");
+                return;
+            }
+
+            // Spécifie les bons numéros d'ack etc...
+            sock->next_ack_num = simptcp_get_seq_num(buf) + 1;
+            // On a reçu un ack of fin
+            sock->socket_state = &(simptcp_entity.simptcp_socket_states->timewait);
+            printf("***** FIN RECEIVED | ACK OF FIN SENT\n");
+
+            start_timer(sock, getTimeoutDuration(sock));
+        }
+    }
+    else {
+        printf("BAD SEQ : expected %d, got %d\n", expected, simptcp_get_seq_num(buf));
+    }
 }
 
 /**
@@ -2091,6 +2327,12 @@ void finwait2_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+    sock->socket_state = &(simptcp_entity.simptcp_socket_states->closed);
+
+    // DELETE TCB.
+    free(sock->in_buffer);
+    free(sock->out_buffer);
+    stop_timer(sock);
 }
 
 
@@ -2267,6 +2509,8 @@ void closing_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    resendBuffer(sock);
 }
 
 
@@ -2428,6 +2672,15 @@ void lastack_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* so
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    // ANCHOR LASTACK
+    unsigned char flags = simptcp_get_flags(buf);
+    if (checkSequenceNumber(sock, buf) && ((flags & ACK) == ACK)) {
+        sock->socket_state = &(simptcp_entity.simptcp_socket_states->closed);
+        stop_timer(sock);
+        printf("****** SOCKET CLOSED PROPERLY.\n");
+    }
+
 }
 
 /**
@@ -2443,6 +2696,8 @@ void lastack_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    resendBuffer(sock);
 }
 
 
@@ -2619,7 +2874,10 @@ void timewait_simptcp_socket_state_handle_timeout (struct simptcp_socket* sock)
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+
+    // ANCHOR TIMEWAIT TIMEOUT
+    sock->socket_state = &(simptcp_entity.simptcp_socket_states->closed);
+    stop_timer(sock);
 }
 
-// TODO : rajouter fonction delete/remove simptcp_socket
 

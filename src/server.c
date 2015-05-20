@@ -38,8 +38,6 @@ int main(int argc, char *argv[])
     /* launch simptcp protocol entity */
     start_simptcp(DEFAULT_LOCAL_UDP_PORT);
 
-
-
     sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_SIMPTCP);
     if (sockfd < 0)
         error("ERROR opening socket");
