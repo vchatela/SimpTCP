@@ -386,12 +386,14 @@ char* simptcp_make_pdu(struct sockaddr_in* src,
     // pdu du réseau.
     simptcp_set_win_size(pdu, ETH_MTU);
     simptcp_set_flags(pdu, flags);
+
+
+    if (payload != NULL) {
+        memcpy((pdu + sizeof(simptcp_generic_header)), payload, payload_len);
+    }
+
     simptcp_add_checksum(pdu, total_length);
 
-    if(payload != NULL)
-    {
-        memcpy((pdu+sizeof(simptcp_generic_header)), payload, payload_len);
-    }
 
     return pdu;
 }

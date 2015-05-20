@@ -2,20 +2,17 @@
  * \brief
  *
  */
-#include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>          /* for printf() */
 #include <stdint.h>         /* for UINT16_MAX */
 #include <string.h>         /* for memset() */
 #include <unistd.h>         /* for sleep() */
-#include <errno.h>          /* for error numbers */
 #include <fcntl.h>              /* for fcntl(), O_NONBLOCK */
 #include <arpa/inet.h>
 #include <sys/time.h>           /* for gettimeofday,..*/
 
 
 #include <simptcp_entity.h>
-#include <simptcp_lib.h>
 #include <simptcp_packet.h>
 #include <libc_socket.h>
 
@@ -195,7 +192,9 @@ void * simptcp_entity_handler()
             if (!simptcp_check_checksum(buffer,simptcp_entity.in_len))
             {
 #if __DEBUG__
-                printf("Dropping corrupted packet\n");
+
+                printf("Dropping corrupted packet (bad checksum) \n");
+                simptcp_print_packet(buffer);
 #endif
                 /* TODO : on pourrait prévoir un memset */
                 continue ;

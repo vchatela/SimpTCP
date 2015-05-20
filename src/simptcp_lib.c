@@ -362,8 +362,8 @@ int closed_simptcp_socket_state_active_open (struct  simptcp_socket* sock, struc
     // Next seq num devra être incrémenté à la réception
     // du pdu ack. 
     sock->next_seq_num = get_initial_seq_num();
-    
-    //print_simptcp_socket(sock);
+
+    printf("***** SYN; SEQ=%d, ACK=%d\n", sock->next_seq_num, sock->next_ack_num);
 
     char* pdu = simptcp_make_pdu(&sock->local_simptcp,
                              &sock->remote_simptcp,
@@ -615,6 +615,9 @@ int listen_simptcp_socket_state_accept (struct simptcp_socket* sock, struct sock
     
 
     // ANCHOR_ACCEPT
+    sock->next_seq_num = get_initial_seq_num();
+    printf("****** SEND SYN/ACK : SEQ=%d, ACK=%d\n", sock->next_seq_num, sock->next_ack_num);
+
     // On a reçu un syn => on renvoie un syn ack
     char* pdu = simptcp_make_pdu(&sock->local_simptcp,
                                          &sock->remote_simptcp,
@@ -626,6 +629,7 @@ int listen_simptcp_socket_state_accept (struct simptcp_socket* sock, struct sock
     
 	// Copie le pdu dans le out buffer.
     memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
+
 	// Envoie le pdu
 	int res = sendto(simptcp_entity.udp_fd, sock->out_buffer,
 				simptcp_get_total_len(sock->out_buffer), 0,
@@ -651,8 +655,14 @@ int listen_simptcp_socket_state_accept (struct simptcp_socket* sock, struct sock
     {
         if (conn_req==simptcp_entity.simptcp_socket_descriptors[fd])
             newfd = fd;
-    } 
-    
+    }
+
+    // On update le numéro d'ack du socket fils. // ANCHOR_B
+    struct simptcp_socket *newsock = simptcp_entity.simptcp_socket_descriptors[newfd];
+    newsock->next_ack_num = sock->next_ack_num;
+    printf("MON FILS TU AS SEQ=%d, ACK=%d\n", newsock->next_seq_num, newsock->next_ack_num);
+
+    //print_simptcp_socket(simptcp_entity.simptcp_socket_descriptors[newfd]);
     conn_req->socket_state = &(simptcp_entity.simptcp_socket_states->synrcvd);
     // On attend la réception du ack, qui fera tout passer à established.
     while(conn_req->socket_state != &(simptcp_entity.simptcp_socket_states->established))
@@ -766,26 +776,37 @@ void listen_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* soc
    
     // On vérifie que le message est un syn
     unsigned char flags = simptcp_get_flags(buf);
+
+    // TODO : vérifier les seq numbers.
+
     if((flags & SYN) == SYN)
     {
+        // Réception (ICI premier SYN)
         // On crée un nouveau socket dont on obtient le fd.
         int fd = create_simptcp_socket();
         struct simptcp_socket* newsock = simptcp_entity.simptcp_socket_descriptors[fd]; 
         newsock->socket_type = nonlistening_server; 
         newsock->remote_simptcp = sock->remote_simptcp;
+        newsock->local_simptcp = sock->local_simptcp;
         // Ajout le nouveau socket à la file des connexions et on incrémente
         // le nombre de connexions en cours.
         sock->new_conn_req[sock->pending_conn_req] = newsock;
         sock->pending_conn_req++;
-      
+        // On met àjour les numéros de séquence du nouveau socket.
+        newsock->next_seq_num = sock->next_seq_num + 1;
+        sock->next_ack_num = simptcp_get_seq_num(buf) + 1;
+
     }
     else if((flags & ACK) == ACK)
     {
         // On récupère le fils
         struct simptcp_socket* child = sock->new_conn_req[sock->pending_conn_req];
         child->socket_state = &(simptcp_entity.simptcp_socket_states->established);
+        child->next_ack_num++;
+        memset(&sock->remote_simptcp, 0, sizeof(struct sockaddr_in));
 
-        
+        sock->next_seq_num = get_initial_seq_num();
+        sock->next_ack_num = 0;
     }
 
     
@@ -977,7 +998,9 @@ void synsent_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* so
     {
 		// Spécifie les bons numéros d'ack etc...
         sock->next_ack_num = simptcp_get_seq_num(buf) + 1;
-				sock->next_seq_num += 1;
+        sock->next_seq_num = simptcp_get_ack_num(buf);
+
+        printf("***** ACK: ACK=%d, SEQ=%d\n", sock->next_ack_num, sock->next_seq_num);
 		// On a reçu un syn, => on renvoie un ack
         char* pdu = simptcp_make_pdu(&sock->local_simptcp,
                                      &sock->remote_simptcp,
@@ -1149,7 +1172,7 @@ ssize_t synrcvd_simptcp_socket_state_recv (struct simptcp_socket* sock, void *bu
 #endif
     }
 
-    // On copie le packet dans le in_buffer.
+    /*// On copie le packet dans le in_buffer.
     memcpy(sock->in_buffer, buf, n);
     unsigned char flags = simptcp_get_flags(buf);
 		
@@ -1167,7 +1190,8 @@ ssize_t synrcvd_simptcp_socket_state_recv (struct simptcp_socket* sock, void *bu
 
         // On a reçu un syn ack
         sock->socket_state = &(simptcp_entity.simptcp_socket_states->established);
-    }
+    }*/
+    printf("NNNNNNNNNNNNNNNNNNOOOOOOOOOOOOOO");
     return n;
 }
 
@@ -1232,6 +1256,7 @@ void synrcvd_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* so
         return -1;
 #endif
     }
+    // ---------- A VOIR APRES -----------
     // ANCHOR SYNRCVD
     // On copie le packet dans le in_buffer.
     memcpy(sock->in_buffer, buf, len);
@@ -1239,19 +1264,22 @@ void synrcvd_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket* so
 		
     if((flags & ACK) == ACK)
     {
-        int ack_num = simptcp_get_seq_num(buf);	
+        int ack_num = simptcp_get_seq_num(buf);
+        printf("Attendu ack=%d, obtenu ack=%d\n", sock->next_seq_num,
+               ack_num);
+
         if(ack_num != sock->next_seq_num)
         {
-            printf("Attendu ack=%d, obtenu ack=%d", sock->next_seq_num, 
-                            ack_num);
             return; 
         }
+
         // Spécifie les bons numéros d'ack etc...
         sock->next_ack_num = ack_num + 1;
-
+        printf("LOLOLOLOLOL NEXT ACK = %d", sock->next_ack_num);
         // On a reçu un syn ack
         sock->socket_state = &(simptcp_entity.simptcp_socket_states->established);
     }
+
     return;
 
 }
@@ -1353,7 +1381,42 @@ ssize_t established_simptcp_socket_state_send (struct simptcp_socket* sock, cons
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+    // ANCHOR SEND
+    // Envoi depuis un client
 
+    // Numéro de séquence du premier pdu
+    sock->next_seq_num++;
+
+    char *pdu = simptcp_make_pdu(&sock->local_simptcp,
+                                 &sock->remote_simptcp,
+                                 buf, // payload
+                                 n, // len
+                                 sock->next_seq_num, // seq
+                                 sock->next_ack_num, // ack
+                                 0);
+
+    // Copie le pdu dans le out buffer.
+    memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
+
+    free(pdu);
+
+    int oldAckNum = sock->next_ack_num;
+    int res = libc_sendto(simptcp_entity.udp_fd,
+                          sock->out_buffer,
+                          simptcp_get_total_len(sock->out_buffer),
+                          0,
+                          (struct sockaddr *) &(sock->remote_udp),
+                          sizeof(struct sockaddr_in));
+
+    printf("***** SEND: SEQ=%d, ACK=%d\n", sock->next_seq_num, sock->next_ack_num);
+
+    // Si le client fait plusieurs send rapidement, on attend le ack avant de lancer le prochain
+    // send.
+    while (sock->next_ack_num == oldAckNum) {
+        usleep(100);
+    }
+
+    printf("***** OUT OF SEND. \n");
     return 0;
 }
 /**
@@ -1373,8 +1436,17 @@ ssize_t established_simptcp_socket_state_recv (struct simptcp_socket* sock, void
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+    // Attente de réception du paquet.
+    while (sock->in_len == 0) {
+        usleep(100);
+    }
 
-    return 0;
+    // Quand on a un paquet => on le donne à l'user.
+    int length = sock->in_len <= n ? sock->in_len : n;
+    memcpy(buf, sock->in_buffer, length);
+    sock->in_len = 0;
+
+    return length;
 }
 
 /**
@@ -1430,6 +1502,50 @@ void established_simptcp_socket_state_process_simptcp_pdu (struct simptcp_socket
 #if __DEBUG__
     printf("function %s called\n", __func__);
 #endif
+    printf("***** PKT RECU: SEQ=%d, ACK=%d\n", simptcp_get_seq_num(buf), simptcp_get_ack_num(buf));
+    // ANCHOR PROCESS
+    int seq = simptcp_get_seq_num(buf);
+    int expected = sock->next_ack_num;
+    if (seq == expected) {
+        sock->next_ack_num++;
+        printf("Good sequence number : expected %d, got %d\n", expected, seq);
+        // Cas où on reçoit un paquet
+        // 1. On stocke le paquet dans le in buffer.
+        int length = len < SIMPTCP_SOCKET_MAX_BUFFER_SIZE ? len : MAX_SIMPTCP_BUFFER_SIZE;
+        memcpy(sock->in_buffer, buf, length);
+        sock->in_len = len;
+
+        // 2. on renvoie un ack.
+        char *pdu = simptcp_make_pdu(&sock->local_simptcp,
+                                     &sock->remote_simptcp,
+                                     NULL, // payload
+                                     0, // len
+                                     sock->next_seq_num, // seq
+                                     sock->next_ack_num, // ack
+                                     ACK);
+
+        // Copie le pdu dans le out buffer.
+        memcpy(sock->out_buffer, pdu, simptcp_get_total_len(pdu));
+
+        free(pdu);
+
+        int res = libc_sendto(simptcp_entity.udp_fd,
+                              sock->out_buffer,
+                              simptcp_get_total_len(sock->out_buffer),
+                              0,
+                              (struct sockaddr *) &(sock->remote_udp),
+                              sizeof(struct sockaddr_in));
+
+        printf("***** ACK SENT: SEQ=%d, ACK=%d\n", sock->next_seq_num, sock->next_ack_num);
+
+        // On incrémente le prochain seq number.
+        sock->next_seq_num++;
+    }
+    else {
+        printf("Bad sequence number : expected %d, got %d\n", expected, seq);
+    }
+
+
 
 }
 
