@@ -1,1 +1,2 @@
 install: make
+sudo: true
