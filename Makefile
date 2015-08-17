@@ -15,8 +15,8 @@ all: build
 
 build:
 	make -C $(SRCDIR) $(EXEC)
-	cd $(SRCDIR) && mv $(EXEC) ../$(BUILDDIR)
+	# cd $(SRCDIR) && mv $(EXEC) ../$(BUILDDIR)
 
 clean:
 	make -C $(SRCDIR) clean
-	cd $(BUILDDIR) && rm $(EXEC)
+	# cd $(BUILDDIR) && rm $(EXEC)
